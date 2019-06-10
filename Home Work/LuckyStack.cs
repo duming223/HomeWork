@@ -79,8 +79,6 @@ namespace Home_Work
             problem.Name = author.Name;
             problem.Tile = "这是一个求助";
             problem.Boyd = "求助内容......";
-            problem.Agree = 0;
-            problem.Disagree = 0;
             problem.ComName = "";
             problem.Comment = "";
             getlog(problem);//打印log

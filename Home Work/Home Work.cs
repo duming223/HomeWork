@@ -32,7 +32,7 @@ namespace Home_Work
 
 
             //Console.WriteLine("赞：{0} 踩：{1}  ", article.Agree, article.Disagree);
-            //Console.WriteLine("{0}评论了{1}:{2}:", article.ComName, article.Tile, article.Comment);
+            Console.WriteLine("{0}评论了：{1}:{2}:", article.ComName, article.Tile, article.Comment);
 
 
             //IArithmetc arithmetc = new Add();
