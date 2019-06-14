@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practice", "ConsoleApp1\Pra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Show", "ConsoleApp2\Show.csproj", "{475F3E21-B1D2-4C94-8984-AD3E68F0EB7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Work Paint", "Work Paint\Work Paint.csproj", "{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{475F3E21-B1D2-4C94-8984-AD3E68F0EB7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{475F3E21-B1D2-4C94-8984-AD3E68F0EB7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{475F3E21-B1D2-4C94-8984-AD3E68F0EB7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

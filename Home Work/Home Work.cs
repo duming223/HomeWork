@@ -1,4 +1,7 @@
 ﻿using System;
+using Home_Work._17bang;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Home_Work
 {
@@ -6,47 +9,45 @@ namespace Home_Work
     {
         static void Main(string[] args)
         {
-            Function function = new Function();
+            Author WalkMan = new Author() { Name = "WalkMan", ID = 223 };
+            Author FreeMan = new Author() { Name = "FreeMan", ID = 123 };
 
-            Logger logger = new Logger();
+            Article article1 = new Article()
+            {
+                author = FreeMan,
+                Tile = "FreeMAN发布了一篇文章",
+                Boyd = "引用类型变量与实例的关系：引用类型变量里储存的是对象的内存的地址",
+                PublishDate = DateTime.Now,
+            };
 
-            Action<Article> getpublishlog = new Action<Article>(logger.GetPublishLog);
-            Action<Article> getproblemlog = new Action<Article>(logger.GetProblemLog);
-            Action<Article> getsuggestlog = new Action<Article>(logger.GetSuggestLog);
+            Console.WriteLine("----------------------------------------------------------------");
 
-            Author zm = new Author() { ID = 369, Name = "左明" };
-            Author xr = new Author() { ID = 223, Name = "行人" };
-            Author lr = new Author() { ID = 258, Name = "路人" };
+            Article article2 = new Article()
+            {
+                author = WalkMan,
+                Tile = "WalkMan发布了一篇文章",
+                Boyd = "实际上，变量表示了储存位置，并且每个变量都有一个类型，以决定什么样的值能够存入变量",
+                PublishDate = DateTime.Now
+            };
+            IPublish<Article> Getpublish = article1;
+            Getpublish.Publish(article1);
+            Getpublish.Publish(article2);
 
-            //发布一篇文章
-            Article article = function.Publish(xr, getpublishlog);
-
-            //发布一篇求助
-            //Article problem = function.PushProblem(zm,getproblemlog);
-
-            //提出一个建议
-            // Article suggest = function.PushSuggest(lr, getsuggestlog);
-
-            //评论一篇文章
-            function.Comment(lr, article, "#%%$^#$@");
+            IArticleRepository iar = new ArticleReporsitory();
+            iar.Add(article1);
+            iar.Add(article2);
 
 
-            //Console.WriteLine("赞：{0} 踩：{1}  ", article.Agree, article.Disagree);
-            Console.WriteLine("{0}评论了：{1}:{2}:", article.ComName, article.Tile, article.Comment);
+            var x = iar.Get();//获取所有文章
+            Console.WriteLine("***************获取所有文章****************");
+            foreach (var item in x)   
+            {
+                Console.WriteLine(item.Tile );
+            }
+            Console.WriteLine("********************************************");
 
-
-            //IArithmetc arithmetc = new Add();
-            //double x = arithmetc.Add(1, 3);
-            //Console.WriteLine(x);
-
-            //Number number = new Number();
-            //int x = number.Add(1, 3);
-            //Console.WriteLine(x);
+            Console.WriteLine("********通过作者名查找文章****************");
+            iar.GetBy("wa");     //通过作者名称查找文章
         }
-    }
-
-    class Example
-    {
-
     }
 }
