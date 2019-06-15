@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace Home_Work._17bang
+namespace HomeWork._17bang
 {
     public class ArticleReporsitory : IArticleRepository
     {

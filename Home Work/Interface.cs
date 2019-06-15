@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Home_Work
+namespace HomeWork
 {
     interface IArithmetc
     {

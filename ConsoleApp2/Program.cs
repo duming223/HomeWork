@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Show
 {
@@ -34,6 +35,11 @@ namespace Show
             {
                 Console.WriteLine(item.Name);
             }
+        }
+
+        private static void Form_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 

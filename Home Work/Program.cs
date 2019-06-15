@@ -1,9 +1,9 @@
 ﻿using System;
-using Home_Work._17bang;
+using HomeWork._17bang;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Home_Work
+namespace HomeWork
 {
     class Program
     {

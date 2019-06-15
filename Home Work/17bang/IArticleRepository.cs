@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Home_Work._17bang
+namespace HomeWork._17bang
 {
     interface IArticleRepository
     {
