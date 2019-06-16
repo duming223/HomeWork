@@ -19,27 +19,24 @@ namespace Show
             //    }
             //    Console.WriteLine();
             //}
-            Student WalkMan = new Student { Name = "WalkMan",OtherName="xr", Ages = 23 };
-            Student FreeMan = new Student { Name = "FreeMan", Ages = 22 };
-            Student WorkMan = new Student { Name = "WorkMan", Ages = 21 };
-            IList<Student> students = new List<Student>();
-            students.Add(WalkMan);
-            students.Add(FreeMan);
-            students.Add(WorkMan);
 
-            var excellent = from s in students
-                            where s.Name.ToLower().Contains("w")
-                            select s;
+            //Student WalkMan = new Student { Name = "WalkMan",OtherName="xr", Ages = 23 };
+            //Student FreeMan = new Student { Name = "FreeMan", Ages = 22 };
+            //Student WorkMan = new Student { Name = "WorkMan", Ages = 21 };
+            //IList<Student> students = new List<Student>();
+            //students.Add(WalkMan);
+            //students.Add(FreeMan);
+            //students.Add(WorkMan);
 
-            foreach (var item in excellent)
-            {
-                Console.WriteLine(item.Name);
-            }
-        }
+            //var excellent = from s in students
+            //                where s.Name.ToLower().Contains("w")
+            //                select s;
 
-        private static void Form_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            //foreach (var item in excellent)
+            //{
+            //    Console.WriteLine(item.Name);
+            //}
+
         }
     }
 

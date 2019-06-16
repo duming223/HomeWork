@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ConsoleApp4
 {
@@ -10,6 +7,32 @@ namespace ConsoleApp4
     {
         static void Main(string[] args)
         {
+            Form form = new Form();
+            Controller controller = new Controller(form);
+            form.Click += controller.FormCicked;
+            form.ShowDialog();
+        }
+
+        class Controller
+        {
+            private Form form;
+            public Controller(Form form)
+            {
+                if (form != null)
+                {
+                    this.form = form;
+                    //this.form.Click += this.FormCicked;
+                }
+            }
+
+            //public void FormCicked(object sender, EventArgs e)
+            //{
+            //    form.Text = DateTime.Now.ToString();
+            //}
+            internal void FormCicked(object sender, EventArgs e)
+            {
+                form.Text = DateTime.Now.ToString();
+            }
         }
     }
 }

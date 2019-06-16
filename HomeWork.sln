@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practice", "ConsoleApp1\Pra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Show", "ConsoleApp2\Show.csproj", "{475F3E21-B1D2-4C94-8984-AD3E68F0EB7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Work Paint", "Work Paint\Work Paint.csproj", "{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkPaint", "Work Paint\WorkPaint.csproj", "{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{C1839135-96AB-47EC-961E-8BB0EB38D92A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp4", "ConsoleApp4\ConsoleApp4.csproj", "{A0B8B612-9240-4ACA-8713-D4C0B1B96A2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp6", "ConsoleApp6\ConsoleApp6.csproj", "{F20E3AAE-35CD-450C-A441-CC1148FCEC01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A0B8B612-9240-4ACA-8713-D4C0B1B96A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0B8B612-9240-4ACA-8713-D4C0B1B96A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0B8B612-9240-4ACA-8713-D4C0B1B96A2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20E3AAE-35CD-450C-A441-CC1148FCEC01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20E3AAE-35CD-450C-A441-CC1148FCEC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20E3AAE-35CD-450C-A441-CC1148FCEC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20E3AAE-35CD-450C-A441-CC1148FCEC01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

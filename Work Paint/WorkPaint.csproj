@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A0B8B612-9240-4ACA-8713-D4C0B1B96A2E}</ProjectGuid>
+    <ProjectGuid>{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp4</RootNamespace>
-    <AssemblyName>ConsoleApp4</AssemblyName>
+    <RootNamespace>Work_Paint</RootNamespace>
+    <AssemblyName>Work Paint</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,7 +35,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CAPTCHA\DesignCAPCTHA.cs" />
+    <Compile Include="CAPTCHA\MapColor.cs" />
+    <Compile Include="CAPTCHA\Map.cs" />
+    <Compile Include="CAPTCHA\MapLine.cs" />
+    <Compile Include="CAPTCHA\MapPixel.cs" />
+    <Compile Include="CAPTCHA\MapString.cs" />
+    <Compile Include="CAPTCHA\Wrong.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
