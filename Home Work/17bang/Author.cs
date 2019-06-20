@@ -6,7 +6,13 @@ namespace HomeWork._17bang
 {
     public class Author
     {
-        public string Name { get; set; }
-        public int ID { get; set; }
+        public string Name { get;}
+        public int ID { get;}
+        public Author(int id ,string name )
+        {
+            Name = name;
+            ID = id;
+        }
+
     }
 }

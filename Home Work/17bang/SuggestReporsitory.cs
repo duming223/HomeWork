@@ -5,9 +5,9 @@ using System.Text;
 
 namespace HomeWork._17bang
 {
-    class ArticleReporsitory : IReporsitory
+    class SuggestReporsitory:IReporsitory
     {
-        public static IList<Article> Reporsitory = new List<Article>();
+        public static IList<Suggest> Reporsitory=new List<Suggest>();
 
         public void GetBy(Author author)
         {

@@ -4,9 +4,7 @@ using System.Text;
 
 namespace HomeWork._17bang
 {
-    interface IThink
+    class User
     {
-        void GetAgree();
-        void GetDisagree();
     }
 }

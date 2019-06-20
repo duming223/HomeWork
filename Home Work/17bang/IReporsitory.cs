@@ -4,7 +4,8 @@ using System.Text;
 
 namespace HomeWork._17bang
 {
-    class Publish
+    public interface IReporsitory
     {
+        void GetBy(Author author);//通过作者名字查找
     }
 }

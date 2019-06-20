@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HomeWork._17bang
+namespace HomeWork._17bang 
 {
-    class ArticleReporsitory : IReporsitory
+    class CommentReporsitory:IReporsitory
     {
-        public static IList<Article> Reporsitory = new List<Article>();
+        public static IList<Comment> Reporsitory=new List<Comment>();
 
         public void GetBy(Author author)
         {
@@ -16,7 +16,7 @@ namespace HomeWork._17bang
                          select x;
             foreach (var item in result)
             {
-                Console.WriteLine(item.Tile);
+                Console.WriteLine(item.Body);
             }
         }
     }

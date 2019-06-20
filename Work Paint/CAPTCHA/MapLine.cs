@@ -13,28 +13,32 @@ namespace WorkPaint.CAPTCHA
         public Bitmap Createline(Bitmap bitmap)
         {
             Console.WriteLine("请输入验证码线条数(10-50)！");
-            int input = Convert.ToInt32(Console.ReadLine());
             Random random = new Random();
 
-            if (input > 10 && input < 50)
+            while (true)
             {
-                for (int i = 0; i < input; i++)
+                int input = Convert.ToInt32(Console.ReadLine());
+                if (input >= 10 && input <= 50)
                 {
-                    Graphics g = Graphics.FromImage(bitmap);
-                    g.DrawLine(
-                        new Pen(Color.FromArgb(random.Next(255))),
-                        new Point(random.Next(100, bitmap.Width), random.Next(50, bitmap.Height)),
-                        new Point(random.Next(50, bitmap.Width), random.Next(100, bitmap.Height))
-                        );
+                    for (int i = 0; i < input; i++)
+                    {
+                        Graphics g = Graphics.FromImage(bitmap);
+                        g.DrawLine(
+                            new Pen(Color.FromArgb(random.Next(200, 255), random.Next(100, 150), random.Next(100, 200), random.Next(100, 150))),
+                            new Point(random.Next(bitmap.Width), random.Next( bitmap.Height)),
+                            new Point(random.Next( bitmap.Width), random.Next( bitmap.Height))
+                            );
+                    }
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("输入错误请重新输入！");
                 }
             }
-            else
-            {
-                throw new 
-                //throw new Exception("非法输入！");
-            }
+
             return bitmap;
         }
-
     }
 }
+

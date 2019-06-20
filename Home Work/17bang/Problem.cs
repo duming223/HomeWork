@@ -4,16 +4,25 @@ using System.Text;
 
 namespace HomeWork._17bang
 {
-    class Problem : IPublish<Problem>
+    public class Problem : IPublish
     {
-        public Author Name { get; set; }
+        public Author Author { get; set; }
         public string Tile { get; set; }
-        public string Boyd { get; set; }
+        public string Body{ get; set; }
+        public int Reward { get; set; }
         public DateTime PublishDate { get; set; }
 
-        public void Publish(Problem author)
+        public Problem(Author author, string tile, string body,int reward)
         {
-            Console.WriteLine("{0}\n来自{1}的求助：\n{2}:\n{3}", PublishDate, Name.Name, Tile, Boyd);
+            Author = author;
+            Tile = tile;
+            Body = body;
+            Reward = reward;
+        }
+
+        public void Publish()
+        {
+            Console.WriteLine("{0}\n来自{1}的求助：\n{2}:\n{3}", PublishDate = DateTime.Now, Author.Name, Tile, Body);
         }
     }
 }
