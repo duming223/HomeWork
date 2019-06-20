@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork", "Home Work\HomeW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkPaint", "Work Paint\WorkPaint.csproj", "{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practice", "Practice\Practice.csproj", "{8DF658D7-CAFA-4D44-962A-4BB8DC0D907D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98D75DCF-D43D-4747-90AE-B9E8A7AE470B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF658D7-CAFA-4D44-962A-4BB8DC0D907D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF658D7-CAFA-4D44-962A-4BB8DC0D907D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF658D7-CAFA-4D44-962A-4BB8DC0D907D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF658D7-CAFA-4D44-962A-4BB8DC0D907D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
