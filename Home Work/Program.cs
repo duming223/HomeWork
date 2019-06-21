@@ -11,18 +11,6 @@ namespace HomeWork
         static void Main(string[] args)
         {
 
-            
-
-
-            //author xr = new author(223, "xr");
-            //article article0 = new article(xr, "111", "222");
-            //articlereporsitory.reporsitory.add(article0);
-
-
-            //foreach (var item in articlereporsitory.reporsitory)
-            //{
-            //    console.writeline(item.body);
-            //}
 
 
             #region 17BangTest1
