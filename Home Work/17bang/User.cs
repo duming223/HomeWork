@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HomeWork._17bang
 {
-    class User
+    public class User
     {
         public int ID { get; set; }
         public int Password { get; set; }

@@ -91,14 +91,14 @@ namespace HomeWork._17bang
             document.Save(suggestlocation);
             return xelement;
         }
+        
+        //并在本地路径上存储！
 
         public void SaveXml(XElement element, string fileName)
         {
             XDocument xDocument = new XDocument(element);
             xDocument.Save(fileName);
         }
-
-
 
 
         public void GteXml()

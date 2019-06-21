@@ -11,7 +11,7 @@ namespace HomeWork._17bang
         public string Body { get; set; }
         public  int Agree { get; set; }
         public int Disagree { get; set; }
-        public DateTime PublishDate { get;}
+        public DateTime PublishDate { get; set; }
 
         public Article(Author author, string tile, string body)
         {
