@@ -50,7 +50,7 @@ namespace practice
 
     class WrapFactory
     {
-        public Box WarpProduct(IProductFactoy productFactoy, Action<Product> action)// 传入一个借口代替委托 降低方法的耦合度              也可以传一个logger实例对象 代替Action委托
+        public Box WarpProduct(IProductFactoy productFactoy, Action<Product> action)// 传入一个接口代替委托 降低方法的耦合度              也可以传一个logger实例对象 代替Action委托
         {
             Box box = new Box();
             Product product = productFactoy.MakeProduct();

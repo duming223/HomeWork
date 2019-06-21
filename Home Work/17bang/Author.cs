@@ -8,11 +8,11 @@ namespace HomeWork._17bang
     {
         public string Name { get;}
         public int ID { get;}
+
         public Author(int id ,string name )
         {
             Name = name;
             ID = id;
         }
-
     }
 }

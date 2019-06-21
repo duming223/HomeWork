@@ -15,7 +15,8 @@ namespace WorkPaint
     {
         static void Main(string[] args)
         {
-            
+            DesignCAPCTHA designCAPCTHA = new DesignCAPCTHA();
+            designCAPCTHA.CreateCAPCTHA();
 
             //CAPTCHA cAPTCHA = new CAPTCHA(200, 100);
             //Project project = new Project(cAPTCHA._bitmap);
