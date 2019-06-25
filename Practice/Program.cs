@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+
 
 namespace practice
 {
@@ -6,25 +9,22 @@ namespace practice
     {
         static void Main(string[] args)
         {
-            WrapFactory wrapFactory = new WrapFactory();
-            IProductFactoy MakePizza = new PizzaFactory();
-            IProductFactoy MakeToyCar = new ToyCarFactory();
 
-            Logger logger = new Logger();
-            Action<Product> log = new Action<Product>(logger.Log);//回调函数：通过委托类型参数 传入主调方法的一个被调用方法 主调方法可以根据自己的逻辑来决定是否调用这个方法 别名好莱坞方法。
-
-            // PizzaFactory pizza = new PizzaFactory();
-            // ToyCarFactory toycar = new ToyCarFactory();
-             
-            // Func<Product> MakePizza = new Func<Product>(pizz.MakePizza);
-            // Func<Product> MakeToyCar = new Func<Product>(toycar.MakeProduct);     //委托
-
-            Box box1 = wrapFactory.WarpProduct(MakeToyCar, log);
-            Box box2 = wrapFactory.WarpProduct(MakePizza, log);
-
-            // Console.WriteLine("{0}在{1}生产 价格是{2}",box1.Product.Name,wrapFactory,box2.Product.Price);
+            Console.WriteLine(Car.name);
         }
     }
+
+   class Car
+    {
+        public static string name;
+        static Car()
+        {
+            name="123";
+        }
+    }
+
+
+    #region 事件
     interface IProductFactoy
     {
         Product MakeProduct();
@@ -79,4 +79,5 @@ namespace practice
             return product;
         }
     }
+    #endregion
 }

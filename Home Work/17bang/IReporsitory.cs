@@ -6,6 +6,6 @@ namespace HomeWork._17bang
 {
     public interface IReporsitory
     {
-        void GetBy(Author author);//通过作者名字查找
+        void GetBy(User author);//通过作者名字查找
     }
 }
