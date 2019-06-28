@@ -9,7 +9,7 @@ namespace HomeWork._17bang
     {
         public static IList<Suggest> Reporsitory=new List<Suggest>();
 
-        public void GetBy(Author author)
+        public void GetBy(User  author)
         {
             var result = from x in Reporsitory
                          where x.Author.Name.ToLower().Contains(author.Name)

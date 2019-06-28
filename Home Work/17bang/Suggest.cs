@@ -6,14 +6,14 @@ namespace HomeWork._17bang
 {
     public class Suggest : IPublish, IThink
     {
-        public Author Author { get; set; }
+        public User  Author { get; set; }
         public string Tile { get; set; }
         public string Body { get; set; }
         public int Agree { get; set; }
         public int Disagree { get; set; }
         public DateTime PublishDate { get; set; }
 
-        public Suggest(Author author, string tile, string body)
+        public Suggest(User  author, string tile, string body)
         {
             Author = author;
             Tile = tile;

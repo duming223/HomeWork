@@ -6,13 +6,13 @@ namespace HomeWork._17bang
 {
     public class Comment : IPublish, IThink
     {
-        public Author Author { get; set; }
+        public User Author { get; set; }
         public string Body { get; set; }
         public int Agree { get; set; }
         public int Disagree { get; set; }
         public DateTime PublishDate { get; set; }
 
-        public Comment(Author author, string body)
+        public Comment(User author, string body)
         {
             Author = author;
             Body = body;

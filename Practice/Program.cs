@@ -9,20 +9,43 @@ namespace practice
     {
         static void Main(string[] args)
         {
+            Vehicle v = new F1();
 
-            Console.WriteLine(Car.name);
+            v.Ran();
         }
     }
 
-   class Car
+    class Vehicle
     {
-        public static string name;
-        static Car()
+        public virtual void Ran()
         {
-            name="123";
+            Console.WriteLine("i m running");
         }
     }
 
+    class Car : Vehicle
+    {
+        public override void Ran()
+        {
+            Console.WriteLine("cai is running");
+        }
+    }
+
+    class RaceCar : Car
+    {
+        public override void Ran()
+        {
+            Console.WriteLine("racecar is running");
+        }
+    }
+
+    class F1 : RaceCar
+    {
+        public void Ran()
+        {
+            Console.WriteLine("F1 is running");
+        }
+    }
 
     #region 事件
     interface IProductFactoy

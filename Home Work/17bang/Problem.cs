@@ -6,13 +6,13 @@ namespace HomeWork._17bang
 {
     public class Problem : IPublish
     {
-        public Author Author { get; set; }
+        public User Author { get; set; }
         public string Tile { get; set; }
         public string Body{ get; set; }
         public int Reward { get; set; }
         public DateTime PublishDate { get; set; }
 
-        public Problem(Author author, string tile, string body,int reward)
+        public Problem(User  author, string tile, string body,int reward)
         {
             Author = author;
             Tile = tile;
