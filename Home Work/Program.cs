@@ -4,18 +4,25 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Xml.Linq;
 using System.IO;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace HomeWork
 {
     class Program
     {
+        public static void CallToChildThread()
+        {
+            Console.WriteLine("Child thread starts");
+        }
         static void Main(string[] args)
         {
-
-            //先通过一个path地址 把目标txt文件的内容转化为srting集合
-
-            Email.Action();
-
+            ThreadStart childref = new ThreadStart(CallToChildThread);
+            Console.WriteLine("In Main: Creating the Child thread");
+            
+            //Thread childThread = new Thread(childref);
+            //childThread.Start();
+            Console.ReadKey();
         }
 
         #region 17BangTest1
