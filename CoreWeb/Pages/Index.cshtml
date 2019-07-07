@@ -2,31 +2,27 @@
 @section Ad{
     index页面的Section
 }
+
 <h1>我是index内容页</h1>
 
 @for (int a = 1; a <= 5; a++)
 {
-    switch (a)
+    for (int i = a; i < 5; i++)
     {
-        case 1:<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> break;
-        case 2:<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> break;
-        case 3:<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> break;
-        case 4:<span>&nbsp;&nbsp;&nbsp;</span> break;
-        case 5:<span>&nbsp;</span> break;
-
+        <span>&nbsp;</span>
     }
     for (int b = 0; b < (a * 2) - 1; b++)
     {
-
+        string color = "red";
         if (a % 2 == 0)
         {
-            <span style="color:red">i</span>
+            color = "red";
         }
         else
         {
-            <span style="color:blue">i</span>
+            color = "blue";
         }
-
+        <span style="color:@color">i</span>
     }
     <br />
 }
