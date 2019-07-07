@@ -11,7 +11,7 @@ namespace CoreWeb.Pages
     {
         public void OnGet()
         {
-
+            
         }
     }
 }

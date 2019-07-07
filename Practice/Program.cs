@@ -9,9 +9,14 @@ namespace practice
     {
         static void Main(string[] args)
         {
-            Vehicle v = new F1();
-
-            v.Ran();
+            for (int a = 1; a <= 9; a++)
+            {
+                for (int b = 1; b <= a; b++)
+                {
+                    Console.Write("{0}x{1}={2}\t", a, b, a * b); ;
+                }
+                Console.WriteLine();
+            }
         }
     }
 
