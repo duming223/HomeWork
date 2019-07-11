@@ -6,9 +6,10 @@ namespace HomeWork._17bang
 {
     public class User
     {
-        public int ID { get; set; }
-        public int Password { get; set; }
+        public int ID { get; }
+        public int Password;
         public string Name { get; set; }
+        public TokenManager TokenManager { get; set; }
 
         public User(int id, int password, string name)
         {
@@ -16,6 +17,5 @@ namespace HomeWork._17bang
             Password = password;
             Name = name;
         }
-
     }
 }

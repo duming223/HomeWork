@@ -1,18 +1,20 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <header>一起帮·源栈欢迎您</header>
     <div style="background-color:aquamarine">
         <section>
-        @RenderSection("Ad", false)
+            @RenderSection("Ad", false)
         </section>
     </div>
     @RenderBody()
     <footer>大神小班……</footer>
 </body>
 </html>
-
-
- 
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="~/js/site.js"></script>

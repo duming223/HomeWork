@@ -6,23 +6,25 @@ using System.Xml.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Reflection;
 
 namespace HomeWork
 {
     class Program
     {
-        public static void CallToChildThread()
-        {
-            Console.WriteLine("Child thread starts");
-        }
+
         static void Main(string[] args)
         {
-            ThreadStart childref = new ThreadStart(CallToChildThread);
-            Console.WriteLine("In Main: Creating the Child thread");
-            
-            //Thread childThread = new Thread(childref);
-            //childThread.Start();
-            Console.ReadKey();
+            User xr = new User(223, 1234, "xr");
+
+            //通过反射调用TokenManager的方法
+            object token = Activator.CreateInstance(typeof(TokenManager));
+            xr.TokenManager = (TokenManager)token;
+            xr.TokenManager.Add(Token.SuperAdmin);
+
+            //通过反射获得私有变量
+            Type tToken = typeof(TokenManager);
+            Console.WriteLine(tToken.GetField("_token", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(new TokenManager()));
         }
 
         #region 17BangTest1
