@@ -1,0 +1,21 @@
+﻿@page
+@model CoreWeb.Pages.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<form method="get"asp-action="" >
+    <div >
+        <label>用户名：</label>
+        <input type="text"name="UserName"class="form-control">
+    </div>
+    <div>
+        <lable >密码：</lable>
+        <input type="password" name="passwor" value="" />
+    </div>
+    <div>
+        <button type="submit"  >提交 </button>
+    </div>
+</form>

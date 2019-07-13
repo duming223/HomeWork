@@ -7,8 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CoreWeb.Pages
 {
-    public class DateTimeModel : PageModel
+    [BindProperties]
+    public class LoginModel : PageModel
     {
+        [BindProperty]
+        public string UserName { get; set; }
         public void OnGet()
         {
 
