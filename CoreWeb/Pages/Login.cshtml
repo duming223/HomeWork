@@ -6,9 +6,11 @@
 <form method="post"asp-action="Login" >
     <div >
         <label>用户名：</label> <input asp-for="UserName"/>
+        <span asp-validation-for="UserName"></span>
     </div>
     <div>
         <lable >密码：</lable> <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
     </div>
     <div>
         <button type="submit"  >提交 </button>
