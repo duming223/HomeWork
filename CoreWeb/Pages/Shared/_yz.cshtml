@@ -1,8 +1,19 @@
 ﻿
-@{
-    Layout = "_Layout";
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        @ViewData["Title"]
+    </title>
+</head>
+<body>
+    <h3 style="color:red">欢迎加入“一起帮”</h3>
+    @RenderBody()
+    <footer>
+    </footer>
+</body>
+</html>
 
-<h3 style="color:red">欢迎加入“一起帮”</h3>
-<div>@RenderBody()</div>
-
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

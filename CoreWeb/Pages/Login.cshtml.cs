@@ -21,7 +21,7 @@ namespace CoreWeb.Pages
         
         public void OnGet()
         {
-
+        
         }
 
         public void OnPost()
