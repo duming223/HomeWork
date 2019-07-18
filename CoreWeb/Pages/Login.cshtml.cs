@@ -12,7 +12,8 @@ namespace CoreWeb.Pages
     [BindProperties]
     public class LoginModel :_LayoutModel
     {
-        [Required(ErrorMessage ="必须填写！")]
+     
+        [Required(ErrorMessage = "必须填写！")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "必须填写！")]
@@ -21,13 +22,19 @@ namespace CoreWeb.Pages
         
         public void OnGet()
         {
-        
+
         }
 
         public void OnPost()
         {
             if (!ModelState.IsValid)
             {
+                return;
+            }
+
+            if (UserName.Contains(' '))
+            {
+                ModelState.AddModelError("UserName", "不能使用空格！");
                 return;
             }
         }

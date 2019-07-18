@@ -2,7 +2,7 @@
 @model RegisterModel
 @{Layout ="_yz"; }
 
-<form method="post" asp-action="Register">
+<form method="post" asp-page="Register">
     <div>
         <label>用户名：</label><input type="text" asp-for="Register.UserName" /><br />
         <span style="color:red" asp-validation-for="Register.UserName"></span>
@@ -13,7 +13,7 @@
     </div>
     <div>
         <label>确认密码：</label><input type="password" asp-for="Register.ConfirmPassWord" /><br />
-        <span style="color:red" asp-validation-for="Register.ConfirmPassWord"></span>
+        <span class="text-warning" asp-validation-for="Register.ConfirmPassWord"></span>
     </div>
     <div>
         <button type="submit">注册</button>

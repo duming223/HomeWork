@@ -15,7 +15,7 @@ namespace SRV
             _userReporsitory = new UserReporsitory();
         }
 
-        public void Register(string name,int password)
+        public void Register(string name,string password) 
         {
             _user.UserName = name;
             _user.PassWord = password;
@@ -24,7 +24,7 @@ namespace SRV
 
         public bool HasExist(string name)
         {
-            return new UserReporsitory().GetByName(name) != null;
+            return  _userReporsitory.GetByName(name) != null;
         }
     }
 }
