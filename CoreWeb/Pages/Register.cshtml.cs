@@ -32,6 +32,7 @@ namespace CoreWeb.Pages
             {
                 return;
             }
+            
 
             if (_userService.HasExist(Register.UserName))
             {
@@ -39,7 +40,17 @@ namespace CoreWeb.Pages
                 return;
             }
 
-            _userService.Register(Register.UserName, Register.PassWord);
+            if (Register.PassWord!=Register .ConfirmPassWord)
+            {
+                ModelState.AddModelError("ConfirmPassWord", "*确认密码和密码不一致");
+                return;
+            }
+
+            if (ModelState.IsValid)
+            {
+                _userService.Register(Register.UserName, Register.PassWord);
+                RedirectToPage("Index");
+            }
         }
     }
 
