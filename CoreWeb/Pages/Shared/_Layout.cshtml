@@ -2,19 +2,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@Model.Title</title>
+    <title>@Model.Title </title>
+    <link rel="Shortcut Icon" href="~/images/logo-big.ico" type="image/x-icon">
 </head>
 <body>
-    <header>一起帮·源栈欢迎您</header>
-    <div style="background-color:aquamarine">
+    <header style="color:hotpink">一起帮·源栈欢迎您!</header>
+    <div style="background-color:antiquewhite">
         <section>
-            @RenderSection("Ad", false)
+            <h5 style="color:red">@RenderSection("Ad", true)</h5>
         </section>
     </div>
     @RenderBody()
-    <footer>大神小班……</footer>
+    <footer><h6> 大神小班……   </h6></footer>
 </body>
 </html>
+
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

@@ -1,41 +1,18 @@
 ﻿@page
-@section Ad{
-    index页面的Section
-}
-@{ Layout = null;}
 @model CoreWeb.Pages.IndexModel
+@section Ad{ 首页！}
 <!DOCTYPE html>
-<h1>我是index内容页</h1>
 
 <form method="post" asp-page="Index">
-    <select asp-for="Winner" asp-items="Model.Students"></select>
     <div>
-        <button type="submit">提交</button>
+
     </div>
 </form>
 
+<h5 style="color:firebrick"><a href="Register">注册页面！</a></h5>
+<h5 style="color:firebrick"><a href="Login">登陆页面！</a></h5>
 
-@for (int a = 1; a <= 5; a++)
-{
-    for (int i = a; i < 5; i++)
-    {
-        <span>&nbsp;</span>
-    }
-    for (int b = 0; b < (a * 2) - 1; b++)
-    {
-        string color = "red";
-        if (a % 2 == 0)
-        {
-            color = "red";
-        }
-        else
-        {
-            color = "blue";
-        }
-        <span style="color:@color">i</span>
-    }
-    <br />
-}
+
 
 
 

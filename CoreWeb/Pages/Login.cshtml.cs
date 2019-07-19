@@ -22,7 +22,7 @@ namespace CoreWeb.Pages
         
         public void OnGet()
         {
-
+            Title = "一起帮😀登陆";
         }
 
         public void OnPost()

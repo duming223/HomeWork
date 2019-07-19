@@ -11,7 +11,7 @@ namespace CoreWeb.Pages.Profile
     {
         public void OnGet()
         {
-
+            
         }
     }
 }

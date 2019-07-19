@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CoreWeb.Pages.Shared;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SRV;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace CoreWeb.Pages
 {
     [BindProperties]
-    public class RegisterModel : PageModel
+    public class RegisterModel :_LayoutModel
     {
         private UserService _userService;
         public Register Register { get; set; }
@@ -22,7 +23,7 @@ namespace CoreWeb.Pages
 
         public void OnGet()
         {
-            ViewData["Title"] = "一起帮 😀 注册";
+            Title= "一起帮 😀 注册";
         }
 
         public void OnPost()
