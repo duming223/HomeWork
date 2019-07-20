@@ -44,6 +44,7 @@ namespace CoreWeb.Pages
             if (Register.UserName.Contains(" ")|Register.PassWord.Contains(" "))
             {
                 ModelState.AddModelError("Register.UserName", "用户名和密码不能包含空格！");
+                return;
             }
 
             if (Register.PassWord!=Register .ConfirmPassWord)

@@ -1,0 +1,10 @@
+﻿@page
+@model CoreWeb.Pages.BindEmeailModel
+@section Ad{绑定邮箱 }
+
+<form method="post" asp-action="BindEmail">
+    <div>
+    <label>邮箱：</label><input type="email" asp-for="EmailAddress" />
+</div>
+</form>
+

@@ -12,6 +12,7 @@ namespace BLL
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public int Integral { get; set; }
+        public Email Email { get; set; }
 
         private UserReporsitory _userReporsitory;
 
