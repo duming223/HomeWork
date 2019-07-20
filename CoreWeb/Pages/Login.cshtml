@@ -1,21 +1,28 @@
 ﻿@page
 @model CoreWeb.Pages.LoginModel
 @section Ad{ 登陆页面！}
-<!DOCTYPE html>
 
-<form method="post"asp-action="Login" >
-    <div >
-        <label>用户名：</label> <input asp-for="UserName"/>
+
+<form method="post" asp-page="/Index">
+    <div>
+        <label>用户名：</label> <input asp-for="UserName" />
         <span asp-validation-for="UserName"></span>
     </div>
     <div>
-        <lable >密码：</lable> <input asp-for="Password" />
+        <lable>密码：</lable> <input asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>
         <button type="submit" style="color:crimson">登陆</button>
-        <button type="submit"style="color:crimson">注册</button>
-        <button type="submit"style="color:crimson">忘记密码</button>
+        <input type="checkbox" name="记住我" value="记住我" />记住我
     </div>
 </form>
+<form method="get" asp-page="/Index">
+<div>
+    <button type="submit" asp-page="/Register"  style="color:crimson">注册</button>
+    <button type="submit" style="color:crimson">忘记密码</button>
+</div>
+</form>
+
+
 <h5 style="color:firebrick"><a href="Index">返回首页！</a></h5>

@@ -19,6 +19,7 @@ namespace SRV
         {
             _user.UserName = name;
             _user.PassWord = password;
+            _user.Register();
             _userReporsitory.Save(_user);
         }
 
@@ -26,5 +27,10 @@ namespace SRV
         {
             return  _userReporsitory.GetByName(name) != null;
         }
+        public bool PasswordIsTrue(string name, string password)
+        {
+           return _userReporsitory.GetByName(name).PassWord ==password;
+        }
+
     }
 }
