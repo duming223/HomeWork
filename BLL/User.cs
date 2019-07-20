@@ -7,7 +7,7 @@ namespace BLL
 {
     public class User
     {
-        private const string _salt = "$*%";
+        public const string _salt = "$*%";
         public int ID { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
@@ -28,7 +28,7 @@ namespace BLL
             }
         }
 
-       private static string GetMd5Hash(MD5 mD5, string input)
+        public static string GetMd5Hash(MD5 mD5, string input)
         {
             byte[] data = mD5.ComputeHash(Encoding.UTF8.GetBytes(input));
 

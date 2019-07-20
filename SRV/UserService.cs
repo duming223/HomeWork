@@ -1,6 +1,7 @@
 ﻿using BLL;
 using BLL.Repository;
 using System;
+using System.Security.Cryptography;
 
 namespace SRV
 {
@@ -15,7 +16,7 @@ namespace SRV
             _userReporsitory = new UserReporsitory();
         }
 
-        public void Register(string name,string password) 
+        public void Register(string name, string password)
         {
             _user.UserName = name;
             _user.PassWord = password;
@@ -25,11 +26,17 @@ namespace SRV
 
         public bool HasExist(string name)
         {
-            return  _userReporsitory.GetByName(name) != null;
+            return _userReporsitory.GetByName(name) != null;
         }
+
         public bool PasswordIsTrue(string name, string password)
         {
-           return _userReporsitory.GetByName(name).PassWord ==password;
+            string mD5Coed;
+            using (MD5 mD5 = MD5.Create())
+            {
+                mD5Coed = User.GetMd5Hash(mD5, password+User._salt);
+            }
+            return mD5Coed == _userReporsitory.GetByName(name).PassWord;
         }
 
     }

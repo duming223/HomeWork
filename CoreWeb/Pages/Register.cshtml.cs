@@ -41,6 +41,11 @@ namespace CoreWeb.Pages
                 return;
             }
 
+            if (Register.UserName.Contains(" ")|Register.PassWord.Contains(" "))
+            {
+                ModelState.AddModelError("Register.UserName", "用户名和密码不能包含空格！");
+            }
+
             if (Register.PassWord!=Register .ConfirmPassWord)
             {
                 ModelState.AddModelError("ConfirmPassWord", "*确认密码和密码不一致");
@@ -52,7 +57,7 @@ namespace CoreWeb.Pages
                 _userService.Register(Register.UserName, Register.PassWord);
             }
 
-
+            Response.Redirect("Login");
         }
     }
 
