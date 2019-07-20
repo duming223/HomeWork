@@ -3,7 +3,7 @@
 @section Ad{ 登陆页面！}
 
 
-<form method="post" asp-page="/Index">
+<form method="post" asp-action="/Index">
     <div>
         <label>用户名：</label> <input asp-for="UserName" />
         <span asp-validation-for="UserName"></span>
@@ -18,11 +18,10 @@
     </div>
 </form>
 <form method="get" asp-page="/Index">
-<div>
-    <button type="submit" asp-page="/Register"  style="color:crimson">注册</button>
-    <button type="submit" style="color:crimson">忘记密码</button>
-</div>
+    <div>
+        <button type="submit" asp-page="/Register" style="color:crimson">注册</button>
+        <button type="submit" style="color:crimson">忘记密码</button>
+    </div>
 </form>
-
 
 <h5 style="color:firebrick"><a href="Index">返回首页！</a></h5>

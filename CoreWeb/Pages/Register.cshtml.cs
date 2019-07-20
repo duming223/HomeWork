@@ -50,8 +50,9 @@ namespace CoreWeb.Pages
             if (ModelState.IsValid)
             {
                 _userService.Register(Register.UserName, Register.PassWord);
-                RedirectToPage("Index");
             }
+
+
         }
     }
 

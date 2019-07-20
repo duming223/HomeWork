@@ -41,21 +41,26 @@ namespace CoreWeb.Pages
 
             if (UserName.Contains(' '))
             {
-                ModelState.AddModelError("UserName", "不能使用空格！");
+                ModelState.AddModelError("UserName", "不能包含空格！");
                 return;
             }
 
             if (!userService.HasExist(UserName))
             {
-                ModelState.AddModelError("UserName","用户名不存在！");
+                ModelState.AddModelError("UserName", "用户名不存在！");
                 return;
             }
 
-            if (!userService.PasswordIsTrue(UserName,Password))
+            if (!userService.PasswordIsTrue(UserName, Password))
             {
-                ModelState.AddModelError("PassWord","密码错误！");
+                ModelState.AddModelError("PassWord", "密码错误！");
                 return;
             }
-        }
+            else
+            {
+                ModelState.AddModelError("UserName", "登录成功！");
+            }
+            Response.Redirect("index");
+           }
     }
 }
