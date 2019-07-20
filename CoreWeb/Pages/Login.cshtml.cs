@@ -13,6 +13,8 @@ namespace CoreWeb.Pages
     [BindProperties]
     public class LoginModel : _LayoutModel
     {
+        private const string _userID= "UserID";
+        private const string _userPassWord = "UserPassWord";
         private UserService userService;
 
         public LoginModel()
@@ -60,7 +62,12 @@ namespace CoreWeb.Pages
             {
                 ModelState.AddModelError("UserName", "登录成功！");
             }
+
+            UserModel userModel = userService.GetLoginInfo(UserName, Password);
+
+            Response.Cookies.Append(_userID, userModel.UserName);
+            Response.Cookies.Append(_userPassWord, userModel.PassWord);
             Response.Redirect("index");
-           }
+        }
     }
 }

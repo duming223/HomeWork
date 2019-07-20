@@ -31,13 +31,27 @@ namespace SRV
 
         public bool PasswordIsTrue(string name, string password)
         {
-            string mD5Coed;
-            using (MD5 mD5 = MD5.Create())
-            {
-                mD5Coed = User.GetMd5Hash(mD5, password+User._salt);
-            }
+            string mD5Coed=User.GetMd5Hash(password);
+   
             return mD5Coed == _userReporsitory.GetByName(name).PassWord;
         }
 
+        public UserModel GetLoginInfo(string userName, string password)
+        {
+           User  user=  _userReporsitory.GetByName(userName);
+
+            if (user==null)
+            {
+                return null;
+            }
+            else
+            {
+                UserModel userModel = new UserModel();
+                userModel.UserName = user.UserName;
+                userModel.PassWord = user.PassWord;
+
+                return userModel;
+            }
+        }
     }
 }

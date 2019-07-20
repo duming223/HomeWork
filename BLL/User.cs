@@ -7,7 +7,7 @@ namespace BLL
 {
     public class User
     {
-        public const string _salt = "$*%";
+        private const string _salt = "$*%";
         public int ID { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
@@ -23,22 +23,22 @@ namespace BLL
 
         public void Register()
         {
-            using (MD5 mD5 = MD5.Create())
-            {
-                PassWord = GetMd5Hash(mD5, PassWord + _salt);
-            }
+            PassWord = GetMd5Hash(PassWord);
         }
 
-        public static string GetMd5Hash(MD5 mD5, string input)
+        public static string GetMd5Hash(string input)
         {
-            byte[] data = mD5.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
+            using (MD5 mD5 = MD5.Create())
             {
-                stringBuilder.Append(data[i].ToString("x2"));
+                byte[] data = mD5.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < data.Length; i++)
+                {
+                    stringBuilder.Append(data[i].ToString("x2"));
+                }
+                return stringBuilder.ToString();
             }
-            return stringBuilder.ToString();
         }
     }
 }
