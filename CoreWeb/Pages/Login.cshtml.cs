@@ -14,7 +14,7 @@ namespace CoreWeb.Pages
     [BindProperties]
     public class LoginModel : _LayoutModel
     {
-        private const string _userName= "UserID";
+        private const string _userName = "UserID";
         private const string _userPassWord = "UserPassWord";
         private UserService userService;
 
@@ -65,21 +65,38 @@ namespace CoreWeb.Pages
             }
 
             UserModel userModel = userService.GetLoginInfo(UserName, Password);
+            if (Request.Form["sevendays"].Contains("true"))
+            {
+                Response.Cookies.Append(_userName, userModel.UserName,
+                    new CookieOptions
+                    {
+                        Expires = DateTime.Now.AddDays(7)
+                    });
 
-            Response.Cookies.Append(_userName, userModel.UserName,
-                new CookieOptions
-                {
-                    //Domain = Request.Host.Value,
-                    //Path = Request.Path,
-                    //IsEssential = true,
-                    Expires = DateTime.Now.AddDays(7)
-                });
-            Response.Cookies.Append(_userPassWord, userModel.Md5PassWord,
-                new CookieOptions
-                {
-                    Expires = DateTime.Now.AddDays(7)
-                });
+                Response.Cookies.Append(_userPassWord, userModel.Md5PassWord,
+                    new CookieOptions
+                    {
+                        Expires = DateTime.Now.AddDays(7)
+                    });
+            }
+            else
+            {
+                Response.Cookies.Append(_userName, userModel.UserName,
+                   new CookieOptions
+                   {
+                       //Domain = Request.Host.Value,
+                       //Path = Request.Path,
+                       //IsEssential = true,
+                       //Expires = DateTime.Now.AddDays(7)
+                   });
 
+                Response.Cookies.Append(_userPassWord, userModel.Md5PassWord,
+                    new CookieOptions
+                    {
+                        //Expires = DateTime.Now.AddDays(7)
+                    });
+            }
+         
             Response.Redirect("index");
         }
     }

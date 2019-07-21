@@ -16,7 +16,7 @@ namespace CoreWeb.Pages.Shared
         private const string _userPassWordKey= "UserPassWord";
         private string _userIdValue;
         private string _userPassWordValue;
-        public UserService userService { get; set; }
+        private UserService userService { get; set; }
 
         public string Title { get; set; }
 
