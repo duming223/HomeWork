@@ -3,21 +3,95 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <title>@Model.Title </title>
+
     <link rel="Shortcut Icon" href="~/images/logo-big.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <style>
+        .fakeimg {
+            height: 100px;
+            background: #aaa;
+        }
+    </style>
 </head>
 <body>
-    <header style="color:hotpink">一起帮·源栈欢迎您!</header>
-    <div style="background-color:antiquewhite">
-        <section>
-            <h5 style="color:red">@RenderSection("Ad", true)</h5>
-        </section>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>一 起 帮</h1>
+        <p>@RenderSection("Ad", true)</p>
     </div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="Index">首页</a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">文章</a></li>
+                    <li class="active"><a href="#">求助</a></li>
+                    @if (ViewData["UserStatus"]== null)
+                    {
+                        <li ><a href="Login">登录</a></li>
+                        <li ><a href="Register">注册</a></li>
+                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                @ViewData["UserStatus"]<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="UserData">个人资料</a></li>
+                                <li class="divider"></li>
+                                <li><a href="LogOut">退出登录</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    @*<nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <link rel="Shortcut Icon" href="~/images/logo-big.ico" type="image/x-icon">
+                    <a class="navbar-brand" href="Index">一起帮</a>
+                    <a class="navbar-brand">@RenderSection("Ad", true)</a>
+
+                    @if (ViewData["UserStatus"] == null)
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="Register"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                            <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                        </ul>
+                    }
+                    else
+                    {
+
+                    }
+
+                </div>
+        </nav>*@
+
     @RenderBody()
-    <footer><h6> 大神小班……   </h6></footer>
+    <footer><h6>  </h6></footer>
 </body>
 </html>
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+

@@ -12,9 +12,10 @@ namespace CoreWeb.Pages
     [BindProperties]
     public class IndexModel : _LayoutModel
     {
-        public void OnGet()
+        public override void OnGet()
         {
             Title = "一起帮😀首页";
+            base.OnGet();
         }
 
         public void OnPost()

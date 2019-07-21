@@ -21,7 +21,7 @@ namespace CoreWeb.Pages
             _userService = new UserService();
         }
 
-        public void OnGet()
+        public override void OnGet()
         {
             Title= "一起帮 😀 注册";
         }

@@ -1,6 +1,6 @@
 ﻿@page
 @model CoreWeb.Pages.LoginModel
-@section Ad{ 登陆页面！}
+@section Ad{ 登陆页面}
 
 
 <form method="post" asp-action="/Index">
@@ -9,7 +9,7 @@
         <span asp-validation-for="UserName"></span>
     </div>
     <div>
-        <lable>密码：</lable> <input asp-for="Password" />
+        <lable>密码：</lable> <input type="password" asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
     <div>

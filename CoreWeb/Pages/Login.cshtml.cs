@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreWeb.Pages.Shared;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SRV;
@@ -13,7 +14,7 @@ namespace CoreWeb.Pages
     [BindProperties]
     public class LoginModel : _LayoutModel
     {
-        private const string _userID= "UserID";
+        private const string _userName= "UserID";
         private const string _userPassWord = "UserPassWord";
         private UserService userService;
 
@@ -26,12 +27,12 @@ namespace CoreWeb.Pages
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "必须填写！")]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public void OnGet()
+        public override void OnGet()
         {
             Title = "一起帮😀登陆";
+            base.OnGet();
         }
 
         public void OnPost()
@@ -65,8 +66,20 @@ namespace CoreWeb.Pages
 
             UserModel userModel = userService.GetLoginInfo(UserName, Password);
 
-            Response.Cookies.Append(_userID, userModel.UserName);
-            Response.Cookies.Append(_userPassWord, userModel.PassWord);
+            Response.Cookies.Append(_userName, userModel.UserName,
+                new CookieOptions
+                {
+                    //Domain = Request.Host.Value,
+                    //Path = Request.Path,
+                    //IsEssential = true,
+                    Expires = DateTime.Now.AddDays(7)
+                });
+            Response.Cookies.Append(_userPassWord, userModel.Md5PassWord,
+                new CookieOptions
+                {
+                    Expires = DateTime.Now.AddDays(7)
+                });
+
             Response.Redirect("index");
         }
     }

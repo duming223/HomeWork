@@ -36,21 +36,48 @@ namespace SRV
             return mD5Coed == _userReporsitory.GetByName(name).PassWord;
         }
 
+        public UserModel GetInfoByCookie(string userIdValue, string userPassWordValue)
+        {
+            User user = _userReporsitory.GetByName(userIdValue);
+
+            if (user == null)
+            {
+                return null;
+            }
+            else if (user.PassWord == userPassWordValue)
+            {
+                UserModel userModel = new UserModel();
+                userModel.UserName = user.UserName;
+                userModel.Md5PassWord = user.PassWord;
+
+                return userModel;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public UserModel GetLoginInfo(string userName, string password)
         {
            User  user=  _userReporsitory.GetByName(userName);
-
+            string Md5PassWord = User.GetMd5Hash(password);
             if (user==null)
             {
                 return null;
             }
-            else
+            else if (user.PassWord==Md5PassWord)
             {
                 UserModel userModel = new UserModel();
                 userModel.UserName = user.UserName;
-                userModel.PassWord = user.PassWord;
+                userModel.PassWord = password;
+                userModel.Md5PassWord =Md5PassWord ;
 
                 return userModel;
+            }
+            else
+            {
+                return null;
             }
         }
     }
