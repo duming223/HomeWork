@@ -12,7 +12,7 @@ namespace CoreWeb.Pages
     {
         public override void OnGet()
         {
-            Title = "一起帮 😀 发布一篇文章";
+            ViewData["Title"] = " 一起帮 😀 发布一篇文章";
             base.OnGet();
         }
     }

@@ -10,9 +10,8 @@ namespace CoreWeb.Pages
     {
         public override void OnGet()
         {
-            Title= "一起帮 😀 求助";
+            ViewData["Title"] = "一起帮 😀 求助";
             base.OnGet();
         }
-
     }
 }

@@ -1,7 +1,8 @@
 ﻿@page
 @model RegisterModel
 @section Ad{ 注册页面}
-<form method="post" >
+
+<form method="post">
     <div>
         <label>用户名：</label><input type="text" asp-for="Register.UserName" /><br />
         <span style="color:red" asp-validation-for="Register.UserName"></span>
@@ -15,9 +16,9 @@
         <span class="text-warning" asp-validation-for="Register.ConfirmPassWord"></span>
     </div>
     <div>
-        <button type="submit"style="color:crimson">注册</button>
-        <button type="reset"style="color:crimson">重置</button>
+        <button type="submit" style="color:crimson">注册</button>
+        <button type="reset" style="color:crimson">重置</button>
     </div>
 </form>
-<h5 style="color:firebrick"><a href="Index">返回首页！</a></h5>
+
 

@@ -18,14 +18,13 @@ namespace CoreWeb.Pages
 
         public RegisterModel()
         {
-            _userService = new UserService();
-           
+            _userService = new UserService();           
         }
 
         public override void OnGet()
         {
-            Title= "一起帮 😀 注册";
-            //base.OnGet();
+            ViewData["Title"] = "一起帮 😀 注册";
+            base.OnGet();
         }
 
         public void OnPost()

@@ -12,9 +12,10 @@ namespace CoreWeb.Pages
     {
         public string EmailAddress { get; set; }
 
-        public void OnGet()
+        public override void OnGet()
         {
-            Title = Title = "一起帮😀绑定邮箱";
+            ViewData["Title"] = " 一起帮 😀 绑定邮箱";
+            base.OnGet();
         }
 
         public void OnPost()

@@ -33,7 +33,7 @@ namespace CoreWeb.Pages
 
         public override void OnGet()
         {
-            Title = "一起帮😀登陆";
+            ViewData["Title"] = "一起帮 😀 登录";
             base.OnGet();
         }
 
@@ -84,24 +84,13 @@ namespace CoreWeb.Pages
             }
             else
             {
-                Response.Cookies.Append(_userName, userModel.UserName,
-                   new CookieOptions
-                   {
-                       //Domain = Request.Host.Value,
-                       //Path = Request.Path,
-                       //IsEssential = true,
-                       //Expires = DateTime.Now.AddDays(7)
-                   });
 
-                Response.Cookies.Append(_userPassWord, userModel.Md5PassWord,
-                    new CookieOptions
-                    {
-                        //Expires = DateTime.Now.AddDays(7)
-                    });
+                Response.Cookies.Append(_userName, userModel.UserName);
+                Response.Cookies.Append(_userPassWord, userModel.Md5PassWord);
+
+                HttpContext.Session.SetString(_sessionId, JsonConvert.SerializeObject(userModel));
+                Response.Redirect("index");
             }
-
-            HttpContext.Session.SetString(_sessionId, JsonConvert.SerializeObject(userModel));
-            Response.Redirect("index");
         }
     }
 }

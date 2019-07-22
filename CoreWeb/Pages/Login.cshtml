@@ -2,7 +2,6 @@
 @model CoreWeb.Pages.LoginModel
 @section Ad{ 登陆页面}
 
-
 <form method="post" asp-action="/Login">
     <div>
         <label>用户名：</label> <input asp-for="UserName" />
@@ -14,7 +13,7 @@
     </div>
     <div>
         <button type="submit" style="color:crimson">登陆</button>
-        <input type="checkbox" name="sevendays" value="true" runat="server"  />一周内免登陆
+        <input type="checkbox" name="sevendays" value="true" runat="server" />一周内免登陆
     </div>
 </form>
 

@@ -7,21 +7,22 @@ namespace SRV
 {
     public class UserService
     {
-        private User _user;
+        private User user;
+        private UserModel _userModel;
         private UserReporsitory _userReporsitory;
 
         public UserService()
         {
-            _user = new User();
+            user = new User();
             _userReporsitory = new UserReporsitory();
         }
 
         public void Register(string name, string password)
         {
-            _user.UserName = name;
-            _user.PassWord = password;
-            _user.Register();
-            _userReporsitory.Save(_user);
+            user.UserName = name;
+            user.PassWord = password;
+            user.Register();
+            _userReporsitory.Save(user);
         }
 
         public bool HasExist(string name)
@@ -31,12 +32,12 @@ namespace SRV
 
         public bool PasswordIsTrue(string name, string password)
         {
-            string mD5Coed=User.GetMd5Hash(password);
-   
+            string mD5Coed = User.GetMd5Hash(password);
+
             return mD5Coed == _userReporsitory.GetByName(name).PassWord;
         }
 
-        public UserModel GetInfoByCookie(string userIdValue, string userPassWordValue)
+        public UserModel GetInfoByCookie(string userIdValue, string userMd5PassWordValue)
         {
             User user = _userReporsitory.GetByName(userIdValue);
 
@@ -44,13 +45,13 @@ namespace SRV
             {
                 return null;
             }
-            else if (user.PassWord == userPassWordValue)
+            else if (user.PassWord == userMd5PassWordValue)
             {
-                UserModel userModel = new UserModel();
-                userModel.UserName = user.UserName;
-                userModel.Md5PassWord = user.PassWord;
+                _userModel = new UserModel();
+                _userModel.UserName = user.UserName;
+                _userModel.Md5PassWord = user.PassWord;
 
-                return userModel;
+                return _userModel;
             }
             else
             {
@@ -60,20 +61,20 @@ namespace SRV
 
         public UserModel GetLoginInfo(string userName, string password)
         {
-           User  user=  _userReporsitory.GetByName(userName);
+            User user = _userReporsitory.GetByName(userName);
             string Md5PassWord = User.GetMd5Hash(password);
-            if (user==null)
+            if (user == null)
             {
                 return null;
             }
-            else if (user.PassWord==Md5PassWord)
+            else if (user.PassWord == Md5PassWord)
             {
-                UserModel userModel = new UserModel();
-                userModel.UserName = user.UserName;
-                userModel.PassWord = password;
-                userModel.Md5PassWord =Md5PassWord ;
+                _userModel = new UserModel();
+                _userModel.UserName = user.UserName;
+                _userModel.PassWord = password;
+                _userModel.Md5PassWord = Md5PassWord;
 
-                return userModel;
+                return _userModel;
             }
             else
             {
