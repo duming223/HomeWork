@@ -65,6 +65,7 @@ namespace CoreWeb.Pages
             }
 
             UserModel userModel = userService.GetLoginInfo(UserName, Password);
+
             if (Request.Form["sevendays"].Contains("true"))
             {
                 Response.Cookies.Append(_userName, userModel.UserName,
