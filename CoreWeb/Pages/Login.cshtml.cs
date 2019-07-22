@@ -7,6 +7,7 @@ using CoreWeb.Pages.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Newtonsoft.Json;
 using SRV;
 
 namespace CoreWeb.Pages
@@ -16,6 +17,7 @@ namespace CoreWeb.Pages
     {
         private const string _userName = "UserID";
         private const string _userPassWord = "UserPassWord";
+        private const string _sessionId = "Id";
         private UserService userService;
 
         public LoginModel()
@@ -97,7 +99,8 @@ namespace CoreWeb.Pages
                         //Expires = DateTime.Now.AddDays(7)
                     });
             }
-         
+
+            HttpContext.Session.SetString(_sessionId, JsonConvert.SerializeObject(userModel));
             Response.Redirect("index");
         }
     }

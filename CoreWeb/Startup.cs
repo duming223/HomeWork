@@ -31,6 +31,20 @@ namespace CoreWeb
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddMemoryCache();
+            //引入session
+            services.AddSession(option =>
+            {
+                //自定义session的cookie名字
+                option.Cookie = new CookieBuilder
+                {
+                    Name = "MySessionId",
+                    //确保session的cookie不受cookie policy影响
+                    IsEssential = true
+                };
+                //session的有效时间为20分钟，从上一次获取session的时间起算
+                option.IdleTimeout = new TimeSpan(0, 20, 0);
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -51,6 +65,7 @@ namespace CoreWeb
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             //app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc();
         }
