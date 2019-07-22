@@ -1,0 +1,9 @@
+﻿@page
+@model CoreWeb.Pages.SuggestModel
+@section Ad{ 建议}
+<form action="/" method="post">
+    <label>标题：</label><input asp-for="SuggestTitle" /><br />
+    <label >内容：</label><br /><textarea asp-for="Body"></textarea><br />
+    <button type="submit">提交</button>
+</form>
+
