@@ -5,19 +5,18 @@ using System.Linq;
 
 namespace BLL.Repository
 {
-    public class SuggestReporsitory : SQLReporsitory
+    public class SuggestReporsitory :Reporsitory<Suggest>
     {
 
-        public void Save(Suggest suggest)
-        {
-            Suggest.Add(suggest);
-            SaveChanges();
-
-        }
+        //public void Save(Suggest suggest)
+        //{
+        //    Entities.Add(suggest);
+        //    CurrentContext.SaveChanges();
+        //}
 
         public Suggest GetByName(string name)
         {
-            return Suggest.Where(s => s.Author.UserName == name).SingleOrDefault();
+            return Entities.Where(s => s.Author.UserName == name).SingleOrDefault();
         }
     }
 }

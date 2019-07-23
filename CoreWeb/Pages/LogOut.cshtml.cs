@@ -9,12 +9,12 @@ namespace CoreWeb.Pages
 {
     public class LogOutModel : PageModel
     {
-        private const string _userIDKey = "UserID";
+        private const string _userNameKey = "UserName";
         private const string _userPassWordKey = "UserPassWord";
 
         public void OnGet()
         {
-            HttpContext.Response.Cookies.Delete(_userIDKey);
+            HttpContext.Response.Cookies.Delete(_userNameKey);
             HttpContext.Response.Cookies.Delete(_userPassWordKey);
             Response.Redirect("index");
         }

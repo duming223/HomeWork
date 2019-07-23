@@ -6,24 +6,19 @@ using System.Text;
 
 namespace BLL.Repository
 {
-    public class UserReporsitory : SQLReporsitory
+    public class UserReporsitory : Reporsitory<User>
     {
 
-       
-
-        public void Save(User user)
-        {
-            Uers.Add(user);
-            SaveChanges();
-
-        }
+        //public void Save(User user)
+        //{
+        //   CurrentContext.Uers.Add(user);
+        //    CurrentContext.SaveChanges();
+        //}
 
         public User GetByName(string name)
         {
-            return Uers.Where(u => u.UserName == name).SingleOrDefault();
+            return Entities.Where(u => u.UserName == name).SingleOrDefault();
         }
-
-
     }
 }
  

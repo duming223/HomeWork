@@ -14,11 +14,11 @@ namespace BLL
         public int Integral { get; set; }
         public Email Email { get; set; }
 
-        private UserReporsitory _userReporsitory;
+        //private UserReporsitory _userReporsitory;
 
         public User()
         {
-            _userReporsitory = new UserReporsitory();
+            //_userReporsitory = new UserReporsitory();
         }
 
         public void Register()

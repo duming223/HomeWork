@@ -16,7 +16,7 @@ namespace CoreWeb.Pages
     {
         [Required(ErrorMessage = "必须填写！")]
         [MaxLength(15, ErrorMessage = "标题不能超过15字")]
-        public string SuggestTitle { get; set; }
+        public string Title { get; set; }
 
 
         [Required(ErrorMessage = "必须填写！")]
@@ -39,6 +39,7 @@ namespace CoreWeb.Pages
 
         public void OnPost()
         {
+            ViewData["Title"] = "一起帮 😀 建议";
             if (!ModelState.IsValid)
             {
                 return;
@@ -46,14 +47,16 @@ namespace CoreWeb.Pages
 
             if (ViewData["UserStatus"] == null)
             {
-                ModelState.AddModelError("SuggestTitle", "请先登录！");
+                ModelState.AddModelError("Title", "请先登录！");
                 return;
             }
             else
             {
-                Author.UserName = UserModel.UserName;
+                Author = new UserModel();
+                Author.UserName =
             }
-        }
 
+            _suggestService.Publish(Title, Body, Author);
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace CoreWeb.Pages
     [BindProperties]
     public class LoginModel : _LayoutModel
     {
-        private const string _userName = "UserID";
+        private const string _userName = "UserName";
         private const string _userPassWord = "UserPassWord";
         private const string _sessionId = "Id";
         private UserService userService;
@@ -61,10 +61,10 @@ namespace CoreWeb.Pages
                 ModelState.AddModelError("PassWord", "密码错误！");
                 return;
             }
-            else
-            {
-                ModelState.AddModelError("UserName", "登录成功！");
-            }
+            //else
+            //{
+            //    ModelState.AddModelError("UserName", "登录成功！");
+            //}
 
             UserModel userModel = userService.GetLoginInfo(UserName, Password);
 
@@ -81,6 +81,7 @@ namespace CoreWeb.Pages
                     {
                         Expires = DateTime.Now.AddDays(7)
                     });
+                Response.Redirect("index");
             }
             else
             {
@@ -89,6 +90,7 @@ namespace CoreWeb.Pages
                 Response.Cookies.Append(_userPassWord, userModel.Md5PassWord);
 
                 HttpContext.Session.SetString(_sessionId, JsonConvert.SerializeObject(userModel));
+
                 Response.Redirect("index");
             }
         }

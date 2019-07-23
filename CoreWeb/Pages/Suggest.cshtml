@@ -3,7 +3,7 @@
 @section Ad{ 建议}
 
 <form method="post" asp-action="/Suggest">
-    <label>标题：</label><input asp-for="SuggestTitle" /><br /><span asp-validation-for="SuggestTitle"></span>
+    <label>标题：</label><input asp-for="Title" /><span asp-validation-for="Title"></span><br />
     <label>内容：</label><br /><textarea asp-for="Body"></textarea><br /><span asp-validation-for="Body"></span>
     <button type="submit">提交</button>
 </form>

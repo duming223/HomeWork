@@ -7,15 +7,15 @@ namespace BLL
 {
     public class Suggest
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
         public User Author { get; set; }
 
-        private SuggestReporsitory suggestReporsitory;
         public void Publish()
         {
 
         }
+
     }
 }
