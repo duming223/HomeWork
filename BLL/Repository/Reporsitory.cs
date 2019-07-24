@@ -8,24 +8,30 @@ namespace BLL.Repository
 {
     public class Reporsitory<T> where T : class
     {
-        public SQLContext CurrentContext { get; set; }
+        public DbContext _context { get; set; }
         protected DbSet<T> Entities { get; set; }
 
-        public Reporsitory()
+        public Reporsitory(DbContext context)
         {
-            CurrentContext = new SQLContext();
-            Entities = CurrentContext.Set<T>();
+            _context = context;
+            Entities= _context.Set<T>();
         }
 
-        public void flush()
+        //public void SetEntities(SQLContext sQLContext)
+        //{
+        //    _context = sQLContext;
+        //    Entities = sQLContext.Set<T>();
+        //}
+
+        public void Flush()
         {
-            CurrentContext.SaveChanges();
+            _context.SaveChanges();
         }
 
-        public T Save( T entity)
+        public T Save(T entity)
         {
             Entities.Add(entity);
-            CurrentContext.SaveChanges();
+            _context.SaveChanges();
 
             return entity;
         }

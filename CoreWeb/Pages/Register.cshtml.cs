@@ -14,11 +14,11 @@ namespace CoreWeb.Pages
     public class RegisterModel :_LayoutModel
     {
         private UserService _userService;
-        public Register Register { get; set; }
+        public Register _register { get; set; }
 
-        public RegisterModel()
-        {
-            _userService = new UserService();           
+        public RegisterModel(UserService userService)
+        { 
+            _userService = userService;
         }
 
         public override void OnGet()
@@ -29,34 +29,34 @@ namespace CoreWeb.Pages
 
         public void OnPost()
         {
+            ViewData["Title"] = "一起帮 😀 注册";
 
             if (!ModelState.IsValid)
             {
                 return;
             }
             
-
-            if (_userService.HasExist(Register.UserName))
+            if (_userService.HasExist(_register.UserName))
             {
-                ModelState.AddModelError("Register.UserName", "用户名已存在！");
+                ModelState.AddModelError("_register.UserName", "用户名已存在！");
                 return;
             }
 
-            if (Register.UserName.Contains(" ")|Register.PassWord.Contains(" "))
+            if (_register.UserName.Contains(" ")| _register.PassWord.Contains(" "))
             {
-                ModelState.AddModelError("Register.UserName", "用户名和密码不能包含空格！");
+                ModelState.AddModelError("_register.UserName", "用户名和密码不能包含空格！");
                 return;
             }
 
-            if (Register.PassWord!=Register .ConfirmPassWord)
+            if (_register.PassWord!= _register.ConfirmPassWord)
             {
-                ModelState.AddModelError("ConfirmPassWord", "*确认密码和密码不一致");
+                ModelState.AddModelError("_register.ConfirmPassWord", "*确认密码和密码不一致");
                 return;
             }
 
             if (ModelState.IsValid)
             {
-                _userService.Register(Register.UserName, Register.PassWord);
+                _userService.Register(_register.UserName, _register.PassWord);
             }
 
             Response.Redirect("Login");

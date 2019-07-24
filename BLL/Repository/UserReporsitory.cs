@@ -7,13 +7,11 @@ using System.Text;
 namespace BLL.Repository
 {
     public class UserReporsitory : Reporsitory<User>
-    {
+    { 
+        public UserReporsitory(DbContext context):base(context)
+        {
 
-        //public void Save(User user)
-        //{
-        //   CurrentContext.Uers.Add(user);
-        //    CurrentContext.SaveChanges();
-        //}
+        }
 
         public User GetByName(string name)
         {

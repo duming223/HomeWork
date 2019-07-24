@@ -7,22 +7,23 @@ namespace SRV
 {
     public class UserService
     {
-        private User user;
+        private User _user;
         private UserModel _userModel;
         private UserReporsitory _userReporsitory;
 
-        public UserService()
+        public UserService(UserReporsitory userReporsitory)
         {
-            user = new User();
-            _userReporsitory = new UserReporsitory();
+            _userModel = new UserModel();
+            _userReporsitory = userReporsitory;
         }
 
         public void Register(string name, string password)
         {
-            user.UserName = name;
-            user.PassWord = password;
-            user.Register();
-            _userReporsitory.Save(user);
+            _user = new User();
+            _user.UserName = name;
+            _user.PassWord = password;
+            _user.Register();
+            _userReporsitory.Save(_user);
         }
 
         public bool HasExist(string name)
@@ -47,7 +48,7 @@ namespace SRV
             }
             else if (user.PassWord == userMd5PassWordValue)
             {
-                _userModel = new UserModel();
+                //_userModel = new UserModel();
                 _userModel.UserName = user.UserName;
                 _userModel.Md5PassWord = user.PassWord;
 
@@ -69,7 +70,7 @@ namespace SRV
             }
             else if (user.PassWord == Md5PassWord)
             {
-                _userModel = new UserModel();
+                //_userModel = new UserModel();
                 _userModel.UserName = user.UserName;
                 _userModel.PassWord = password;
                 _userModel.Md5PassWord = Md5PassWord;

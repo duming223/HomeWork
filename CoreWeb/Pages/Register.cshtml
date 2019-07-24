@@ -4,16 +4,16 @@
 
 <form method="post">
     <div>
-        <label>用户名：</label><input type="text" asp-for="Register.UserName" /><br />
-        <span style="color:red" asp-validation-for="Register.UserName"></span>
+        <label>用户名：</label><input type="text" asp-for="_register.UserName" /><br />
+        <span style="color:red" asp-validation-for="_register.UserName"></span>
     </div>
     <div>
-        <label>密码：</label><input type="password" asp-for="Register.PassWord" /><br />
-        <span style="color:red" asp-validation-for="Register.PassWord"></span>
+        <label>密码：</label><input type="password" asp-for="_register.PassWord" /><br />
+        <span style="color:red" asp-validation-for="_register.PassWord"></span>
     </div>
     <div>
-        <label>确认密码：</label><input type="password" asp-for="Register.ConfirmPassWord" /><br />
-        <span class="text-warning" asp-validation-for="Register.ConfirmPassWord"></span>
+        <label>确认密码：</label><input type="password" asp-for="_register.ConfirmPassWord" /><br />
+        <span class="text-warning" asp-validation-for="_register.ConfirmPassWord"></span>
     </div>
     <div>
         <button type="submit" style="color:crimson">注册</button>

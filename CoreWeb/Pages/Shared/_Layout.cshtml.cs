@@ -16,21 +16,30 @@ namespace CoreWeb.Pages.Shared
         private const string _userPassWordKey = "UserPassWord";
         private string _userNameValue;
         private string _userMd5PassWordValue;
-        public UserModel UserModel { get; set; }
+        //private UserModel _userModel;
+        //UserService _userService;
+
+        //public _LayoutModel(/*UserModel userModel,*/UserService userService)
+        //{
+        //    //_userModel = userModel;
+        //    //_userService = userService;
+        //    UserService _userService = (UserService)HttpContext.RequestServices.GetService(typeof(UserService));
+        //}
 
         public virtual void OnGet()
         {
+            UserService _userService = (UserService)HttpContext.RequestServices.GetService(typeof(UserService));
 
             if (HttpContext.Request.Cookies.TryGetValue(_userIDKry, out _userNameValue))
             {
                 if (HttpContext.Request.Cookies.TryGetValue(_userPassWordKey, out _userMd5PassWordValue))
                 {
-                    UserModel userModel = new UserService().GetInfoByCookie(_userNameValue, _userMd5PassWordValue);
-                    if (userModel != null)
+                     UserModel _userModel = _userService.GetInfoByCookie(_userNameValue, _userMd5PassWordValue);
+                    if (_userModel != null)
                     {
-                        ViewData["UserStatus"] = userModel.UserName;
-                        userModel.UserName = _userNameValue;
-                        userModel.Md5PassWord = _userMd5PassWordValue;
+                        ViewData["UserStatus"] = _userModel.UserName;
+                        _userModel.UserName = _userNameValue;
+                        _userModel.Md5PassWord = _userMd5PassWordValue;
                     }
                 }
             }

@@ -23,12 +23,13 @@ namespace CoreWeb.Pages
         [MaxLength(200, ErrorMessage = "内容不能超过200字")]
         public string Body { get; set; }
 
-        public UserModel Author { get; set; }
+        private UserModel _author;
         private SuggestService _suggestService;
 
-        public SuggestModel()
+        public SuggestModel(UserModel userModel,SuggestService suggestModel)
         {
-            _suggestService = new SuggestService();
+            _author = userModel;
+            _suggestService = suggestModel;
         }
 
         public  override void OnGet()
@@ -39,6 +40,7 @@ namespace CoreWeb.Pages
 
         public void OnPost()
         {
+            base.OnGet();
             ViewData["Title"] = "一起帮 😀 建议";
             if (!ModelState.IsValid)
             {
@@ -52,11 +54,10 @@ namespace CoreWeb.Pages
             }
             else
             {
-                Author = new UserModel();
-                Author.UserName =
+                _author.UserName = GetUserNameByCookie();
             }
 
-            _suggestService.Publish(Title, Body, Author);
+            _suggestService.Publish(Title, Body, _author);
         }
     }
 }

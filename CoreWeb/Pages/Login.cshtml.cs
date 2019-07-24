@@ -18,11 +18,11 @@ namespace CoreWeb.Pages
         private const string _userName = "UserName";
         private const string _userPassWord = "UserPassWord";
         private const string _sessionId = "Id";
-        private UserService userService;
+        private UserService _userService;
 
-        public LoginModel()
+        public LoginModel(UserService  userService)
         {
-            userService = new UserService();
+            _userService = userService;
         }
 
         [Required(ErrorMessage = "必须填写！")]
@@ -50,13 +50,13 @@ namespace CoreWeb.Pages
                 return;
             }
 
-            if (!userService.HasExist(UserName))
+            if (!_userService.HasExist(UserName))
             {
                 ModelState.AddModelError("UserName", "用户名不存在！");
                 return;
             }
 
-            if (!userService.PasswordIsTrue(UserName, Password))
+            if (!_userService.PasswordIsTrue(UserName, Password))
             {
                 ModelState.AddModelError("PassWord", "密码错误！");
                 return;
@@ -66,7 +66,7 @@ namespace CoreWeb.Pages
             //    ModelState.AddModelError("UserName", "登录成功！");
             //}
 
-            UserModel userModel = userService.GetLoginInfo(UserName, Password);
+            UserModel userModel = _userService.GetLoginInfo(UserName, Password);
 
             if (Request.Form["sevendays"].Contains("true"))
             {
