@@ -2,7 +2,7 @@
 @model RegisterModel
 @section Ad{ 注册页面}
 
-<form method="post">
+<form method="post" asp-page="Register">
     <div>
         <label>用户名：</label><input type="text" asp-for="_register.UserName" /><br />
         <span style="color:red" asp-validation-for="_register.UserName"></span>

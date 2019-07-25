@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class AddSuggest
+    public static class AddRegister
     {
         public static void AddService(this IServiceCollection services)
         {

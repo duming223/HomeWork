@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Index">首页</a>
+                <a class="navbar-brand" href="/Index">首页</a>
             </div>
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -46,17 +46,17 @@
                             文章<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="Articlelists">列表</a></li>
+                            <li><a href="/Article/Articlelists">列表</a></li>
                             <li class="divider"></li>
-                            <li><a href="Article">发布</a></li>
+                            <li><a href="/Article/Article">发布</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="Problem">求助</a></li>
-                    <li class="active"><a href="Suggest">建议</a></li>
+                    <li class="active"><a href="/Problem">求助</a></li>
+                    <li class="active"><a href="/Suggest/Suggest">建议</a></li>
                     @if (ViewData["UserStatus"] == null)
                     {
-                        <li><a href="Login">登录</a></li>
-                        <li><a href="Register">注册</a></li>
+                        <li><a href="/Log/Login">登录</a></li>
+                        <li><a href="/Register">注册</a></li>
                     }
                     else
                     {
@@ -65,9 +65,9 @@
                                 Hi, @ViewData["UserStatus"]<b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="UserData">个人资料</a></li>
+                                <li><a href="/User/UserData">个人资料</a></li>
                                 <li class="divider"></li>
-                                <li><a href="LogOut">退出登录</a></li>
+                                <li><a href="/Log/LogOut">退出登录</a></li>
                             </ul>
                         </li>
                     }

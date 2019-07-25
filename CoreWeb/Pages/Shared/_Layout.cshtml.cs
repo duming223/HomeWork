@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static SRV.UserService;
 
 namespace CoreWeb.Pages.Shared
 {
@@ -34,7 +35,7 @@ namespace CoreWeb.Pages.Shared
             {
                 if (HttpContext.Request.Cookies.TryGetValue(_userPassWordKey, out _userMd5PassWordValue))
                 {
-                     UserModel _userModel = _userService.GetInfoByCookie(_userNameValue, _userMd5PassWordValue);
+                     DTOUserModel _userModel = _userService.GetInfoByCookie(_userNameValue, _userMd5PassWordValue);
                     if (_userModel != null)
                     {
                         ViewData["UserStatus"] = _userModel.UserName;
