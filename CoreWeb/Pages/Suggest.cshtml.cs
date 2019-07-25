@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity.UI.Pages.Account.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SRV;
+using static SRV.UserService;
 
 namespace CoreWeb.Pages
 {
@@ -23,7 +24,7 @@ namespace CoreWeb.Pages
         [MaxLength(200, ErrorMessage = "内容不能超过200字")]
         public string Body { get; set; }
 
-        private UserModel _author;
+        private DTOUserModel _author;
         private SuggestService _suggestService;
 
         public SuggestModel(SuggestService suggestModel)
@@ -53,7 +54,7 @@ namespace CoreWeb.Pages
             }
             else
             {
-                _author = new UserModel();
+                _author = new DTOUserModel();
                 _author.UserName = GetUserNameByCookie();
             }
 

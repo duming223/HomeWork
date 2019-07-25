@@ -13,7 +13,5 @@ namespace BLL
         {
             Code = new Random(1000).Next(2000);
         }
-
-
     }
 }

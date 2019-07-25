@@ -8,12 +8,12 @@ namespace SRV
     public class UserService
     {
         private User _user;
-        private UserModel _userModel;
+        private DTOUserModel _userModel;
         private UserReporsitory _userReporsitory;
 
         public UserService(UserReporsitory userReporsitory)
         {
-            _userModel = new UserModel();
+            _userModel = new DTOUserModel();
             _userReporsitory = userReporsitory;
         }
 
@@ -38,7 +38,7 @@ namespace SRV
             return mD5Coed == _userReporsitory.GetByName(name).PassWord;
         }
 
-        public UserModel GetInfoByCookie(string userIdValue, string userMd5PassWordValue)
+        public DTOUserModel GetInfoByCookie(string userIdValue, string userMd5PassWordValue)
         {
             User user = _userReporsitory.GetByName(userIdValue);
 
@@ -60,7 +60,7 @@ namespace SRV
             }
         }
 
-        public UserModel GetLoginInfo(string userName, string password)
+        public DTOUserModel GetLoginInfo(string userName, string password)
         {
             User user = _userReporsitory.GetByName(userName);
             string Md5PassWord = User.GetMd5Hash(password);
@@ -81,6 +81,15 @@ namespace SRV
             {
                 return null;
             }
+        }
+
+        public class DTOUserModel
+        {
+            public string UserName { get; set; }
+            public string PassWord { get; set; }
+            public string Md5PassWord { get; set; }
+            public int Integral { get; set; }
+            public Email Email { get; set; }
         }
     }
 }

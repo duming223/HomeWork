@@ -3,6 +3,7 @@ using BLL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static SRV.UserService;
 
 namespace SRV
 {
@@ -19,7 +20,7 @@ namespace SRV
 
         }
 
-        public void Publish(string title,string body, UserModel userModel)
+        public void Publish(string title,string body, DTOUserModel userModel)
         {
             _suggest = new Suggest();
             _suggest.Title = title;
@@ -27,5 +28,12 @@ namespace SRV
             _suggest.Author = _userReporsitory.GetByName(userModel.UserName);
             _suggestReporsitory.Save(_suggest);
         }
+    }
+
+    public class DTOSuggestModel
+    {
+        public string Title { get; set; }
+        public string Body { get; set; }
+        public User Author { get; set; }
     }
 }
