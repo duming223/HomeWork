@@ -8,8 +8,6 @@ namespace BLL.Repository
     public class SQLContext : DbContext 
     {
 
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=17bang;Integrated Security=True;";
@@ -18,6 +16,7 @@ namespace BLL.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Entity>();
             modelBuilder.Entity<User>();
             modelBuilder.Entity<Email>();
             modelBuilder.Entity<Suggest>();

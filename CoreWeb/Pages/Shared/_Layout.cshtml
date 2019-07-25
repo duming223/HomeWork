@@ -55,7 +55,7 @@
                     <li class="active"><a href="/Suggest/Suggest">建议</a></li>
                     @if (ViewData["UserStatus"] == null)
                     {
-                        <li><a href="/Log/Login">登录</a></li>
+                        <li><a href="/Login/Login">登录</a></li>
                         <li><a href="/Register">注册</a></li>
                     }
                     else
@@ -67,7 +67,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/User/UserData">个人资料</a></li>
                                 <li class="divider"></li>
-                                <li><a href="/Log/LogOut">退出登录</a></li>
+                                <li><a href="/Login/LogOut">退出登录</a></li>
                             </ul>
                         </li>
                     }

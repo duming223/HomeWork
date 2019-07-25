@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BLL.Migrations
 {
     [DbContext(typeof(SQLContext))]
-    [Migration("20190723052616_Suggest")]
-    partial class Suggest
+    [Migration("20190725160016_suggest")]
+    partial class suggest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,46 +21,57 @@ namespace BLL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BLL.Email", b =>
-                {
-                    b.Property<string>("EmailID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Code");
-
-                    b.Property<bool>("IsActivate");
-
-                    b.HasKey("EmailID");
-
-                    b.ToTable("Email");
-                });
-
-            modelBuilder.Entity("BLL.Suggest", b =>
+            modelBuilder.Entity("BLL.Entity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorID");
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Entity");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Entity");
+                });
+
+            modelBuilder.Entity("BLL.Email", b =>
+                {
+                    b.HasBaseType("BLL.Entity");
+
+                    b.Property<int>("Code");
+
+                    b.Property<bool>("IsActivate");
+
+                    b.ToTable("Email");
+
+                    b.HasDiscriminator().HasValue("Email");
+                });
+
+            modelBuilder.Entity("BLL.Suggest", b =>
+                {
+                    b.HasBaseType("BLL.Entity");
+
+                    b.Property<int?>("AuthorId");
 
                     b.Property<string>("Body");
 
                     b.Property<string>("Title");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorID");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Suggest");
+
+                    b.HasDiscriminator().HasValue("Suggest");
                 });
 
             modelBuilder.Entity("BLL.User", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasBaseType("BLL.Entity");
 
-                    b.Property<string>("EmailID");
+                    b.Property<int?>("EmailId");
 
                     b.Property<int>("Integral");
 
@@ -68,25 +79,25 @@ namespace BLL.Migrations
 
                     b.Property<string>("UserName");
 
-                    b.HasKey("ID");
-
-                    b.HasIndex("EmailID");
+                    b.HasIndex("EmailId");
 
                     b.ToTable("User");
+
+                    b.HasDiscriminator().HasValue("User");
                 });
 
             modelBuilder.Entity("BLL.Suggest", b =>
                 {
                     b.HasOne("BLL.User", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorID");
+                        .HasForeignKey("AuthorId");
                 });
 
             modelBuilder.Entity("BLL.User", b =>
                 {
                     b.HasOne("BLL.Email", "Email")
                         .WithMany()
-                        .HasForeignKey("EmailID");
+                        .HasForeignKey("EmailId");
                 });
 #pragma warning restore 612, 618
         }

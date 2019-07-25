@@ -59,7 +59,7 @@ namespace CoreWeb.Pages
                 _userService.Register(_register.UserName, _register.PassWord);
             }
 
-            Response.Redirect("Login");
+            Response.Redirect("/Login/login");
         }
     }
 

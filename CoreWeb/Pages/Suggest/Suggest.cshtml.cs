@@ -13,7 +13,7 @@ using static SRV.UserService;
 namespace CoreWeb.Pages
 {
     [BindProperties]
-    public class SuggestModel :_LayoutModel
+    public class SuggestModel : _LayoutModel
     {
         [Required(ErrorMessage = "必须填写！")]
         [MaxLength(15, ErrorMessage = "标题不能超过15字")]
@@ -32,25 +32,25 @@ namespace CoreWeb.Pages
             _suggestService = suggestModel;
         }
 
-        public  override void OnGet()
+        public override void OnGet()
         {
             ViewData["Title"] = "一起帮 😀 建议";
             base.OnGet();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             base.OnGet();
             ViewData["Title"] = "一起帮 😀 建议";
             if (!ModelState.IsValid)
             {
-                return;
+                return Page();
             }
 
             if (ViewData["UserStatus"] == null)
             {
                 ModelState.AddModelError("Title", "请先登录！");
-                return;
+                return Page();
             }
             else
             {
@@ -58,7 +58,11 @@ namespace CoreWeb.Pages
                 _author.UserName = GetUserNameByCookie();
             }
 
-            _suggestService.Publish(Title, Body, _author);
+            //Understand  运算符
+            int userid = _suggestService.Publish(Title, Body, _author).Author.Id;
+            int suggestid = _suggestService.Publish(Title, Body, _author).Id;
+
+            return Redirect("/Suggest/SuggestSingle?suggestid="+suggestid);
         }
     }
 }
