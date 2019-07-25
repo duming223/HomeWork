@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BLL.Repository
 {
-    public class Reporsitory<T> where T : class
+    public class Reporsitory<T> where T : Entity
     {
         public DbContext _context { get; set; }
         protected DbSet<T> Entities { get; set; }
@@ -34,6 +34,17 @@ namespace BLL.Repository
             _context.SaveChanges();
 
             return entity;
+        }
+/// <summary>
+/// 通过 id查找 entity 
+/// </summary>
+/// <param name="id">
+/// 用户的id
+/// </param>
+/// <returns>对应的entity </returns>
+        public T GetBy(int id)
+        {
+            return Entities.Where(e => e.Id == id).Single();
         }
 
         //public T GetByName(string userName)

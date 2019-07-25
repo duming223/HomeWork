@@ -5,10 +5,9 @@ using System.Text;
 
 namespace BLL
 {
-    public class User
+    public class User:Entity
     {
         private const string _salt = "$*%";
-        public int ID { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public int Integral { get; set; }

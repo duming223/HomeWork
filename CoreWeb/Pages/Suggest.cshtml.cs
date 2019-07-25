@@ -26,9 +26,8 @@ namespace CoreWeb.Pages
         private UserModel _author;
         private SuggestService _suggestService;
 
-        public SuggestModel(UserModel userModel,SuggestService suggestModel)
+        public SuggestModel(SuggestService suggestModel)
         {
-            _author = userModel;
             _suggestService = suggestModel;
         }
 
@@ -54,6 +53,7 @@ namespace CoreWeb.Pages
             }
             else
             {
+                _author = new UserModel();
                 _author.UserName = GetUserNameByCookie();
             }
 

@@ -4,9 +4,8 @@ using System.Text;
 
 namespace BLL
 {
-    public class Email
+    public class Email:Entity
     {
-        public string EmailID { get; set; }
         public bool IsActivate { get; set; }
         public int Code { get; set; }
 
