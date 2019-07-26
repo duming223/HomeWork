@@ -1,5 +1,6 @@
 ﻿using BLL;
 using BLL.Repository;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,17 +8,16 @@ using static SRV.UserService;
 
 namespace SRV
 {
-    public class SuggestService
+    public class SuggestService:BaseService
     {
         private Suggest _suggest;
         private SuggestReporsitory _suggestReporsitory;
-        private UserReporsitory _userReporsitory;
 
-        public SuggestService(SuggestReporsitory suggestReporsitory,UserReporsitory userReporsitory)
+        public SuggestService(SuggestReporsitory suggestReporsitory, IHttpContextAccessor httpContextAccessor,
+            UserReporsitory userReporsitory)
+            :base(userReporsitory,httpContextAccessor)
         {
             _suggestReporsitory = suggestReporsitory;
-            _userReporsitory =userReporsitory;
-
         }
 
         public Suggest Publish(string title,string body, DTOUserModel userModel)

@@ -1,20 +1,22 @@
 ﻿using BLL;
 using BLL.Repository;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Security.Cryptography;
 
 namespace SRV
 {
-    public class UserService
+    public class UserService:BaseService
     {
         private User _user;
         private DTOUserModel _userModel;
-        private UserReporsitory _userReporsitory;
 
-        public UserService(UserReporsitory userReporsitory)
+        public UserService(UserReporsitory userReporsitory,
+            UserReporsitory reporsitory,
+            IHttpContextAccessor httpContextAccessor
+            ) :base(userReporsitory,httpContextAccessor)
         {
             _userModel = new DTOUserModel();
-            _userReporsitory = userReporsitory;
         }
 
         public void Register(string name, string password)

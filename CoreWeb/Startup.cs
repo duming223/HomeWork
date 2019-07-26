@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using BLL;
 using BLL.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +22,15 @@ namespace CoreWeb
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            //var autoMapconfig = new MapperConfiguration(cfg =>
+            //  {
+            //      cfg.CreateMap<Suggest, DTOSuggestModel>();
+
+            //  });
+
+            //autoMapconfig.AssertConfigurationIsValid();
+            //var mapper = autoMapconfig.CreateMapper();
         }
 
         public IConfiguration Configuration { get; }
