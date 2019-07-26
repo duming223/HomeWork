@@ -60,6 +60,17 @@ namespace SRV
             }
         }
 
+        public DTOUserModel GetInfoById(int userid)
+        {
+            _user = _userReporsitory.GetBy(userid);
+            return _userModel = new DTOUserModel
+            {
+                Id = _user.Id,
+                UserName = _user.UserName,
+            };
+
+        }
+
         public DTOUserModel GetLoginInfo(string userName, string password)
         {
             User user = _userReporsitory.GetByName(userName);
@@ -71,6 +82,7 @@ namespace SRV
             else if (user.PassWord == Md5PassWord)
             {
                 //_userModel = new UserModel();
+                _userModel.Id = user.Id;
                 _userModel.UserName = user.UserName;
                 _userModel.PassWord = password;
                 _userModel.Md5PassWord = Md5PassWord;

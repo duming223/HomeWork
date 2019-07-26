@@ -1,10 +1,14 @@
 ﻿@page
 @model CoreWeb.Pages.Suggest.SuggestSingleModel
-@section Ad{ 建议}
+@section Ad{ @Model.userModel.UserName 的建议}
 
-<h2></h2><br />
-<h3>@Model.suggestModel.Title</h3>
 
+<h2>@Model.userModel.UserName 的建议</h2><br />
+<hr style="color:darkgray" />
+<h2>Title:</h2><br />
+@Model.suggestModel.Title
+
+<h3>Body:</h3><br />
 <main>
     @Model.suggestModel.Body
 </main>

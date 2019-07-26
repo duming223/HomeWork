@@ -59,9 +59,8 @@ namespace CoreWeb.Pages
             }
 
             //Understand  运算符
-            int userid = _suggestService.Publish(Title, Body, _author).Author.Id;
             int suggestid = _suggestService.Publish(Title, Body, _author).Id;
-
+            
             return Redirect("/Suggest/SuggestSingle?suggestid="+suggestid);
         }
     }

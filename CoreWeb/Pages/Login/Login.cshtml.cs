@@ -18,7 +18,7 @@ namespace CoreWeb.Pages
     {
         private const string _userName = "UserName";
         private const string _userPassWord = "UserPassWord";
-        private const string _sessionId = "Id";
+        private const string _userId= "Id";
         private UserService _userService;
 
         public LoginModel(UserService  userService)
@@ -89,8 +89,10 @@ namespace CoreWeb.Pages
 
                 Response.Cookies.Append(_userName, userModel.UserName);
                 Response.Cookies.Append(_userPassWord, userModel.Md5PassWord);
+                Response.Cookies.Append(_userId, userModel.Id.ToString ());
 
-                HttpContext.Session.SetString(_sessionId, JsonConvert.SerializeObject(userModel));
+                //  添加session
+                //HttpContext.Session.SetString(_sessionId, JsonConvert.SerializeObject(userModel));
 
                 Response.Redirect("/index");
             }
