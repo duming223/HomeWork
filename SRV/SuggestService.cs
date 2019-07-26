@@ -3,53 +3,63 @@ using BLL.Repository;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using static SRV.UserService;
 
 namespace SRV
 {
-    public class SuggestService:BaseService
+    public class SuggestService : BaseService
     {
         private Suggest _suggest;
         private SuggestReporsitory _suggestReporsitory;
 
         public SuggestService(SuggestReporsitory suggestReporsitory, IHttpContextAccessor httpContextAccessor,
             UserReporsitory userReporsitory)
-            :base(userReporsitory,httpContextAccessor)
+            : base(userReporsitory, httpContextAccessor)
         {
             _suggestReporsitory = suggestReporsitory;
         }
 
-        public Suggest Publish(string title,string body, DTOUserModel userModel)
+        public Suggest Publish(DTOSuggestModel dTOSuggestModel)
         {
-            _suggest = new Suggest();
-            _suggest.Title = title;
-            _suggest.Body = body;
-            _suggest.Author = _userReporsitory.GetByName(userModel.UserName);
-            _suggestReporsitory.Save(_suggest);
-            return _suggest;
+            Suggest suggest = Mapper.Map<DTOSuggestModel, Suggest>(dTOSuggestModel);
+            suggest.Publish();
+            return _suggestReporsitory.Save(suggest);
+
+            //_suggest = new Suggest();
+            //_suggest.Title = title;
+            //_suggest.Body = body;
+            //_suggest.Author = _userReporsitory.GetByName(userModel.UserName);
+            //_suggestReporsitory.Save(_suggest);
+            //return _suggest;
         }
 
         public DTOSuggestModel GetBy(int suggestid)
         {
-            _suggest= _suggestReporsitory.GetBy(suggestid);
+            _suggest = _suggestReporsitory.GetBy(suggestid);
 
-            DTOSuggestModel dto = new DTOSuggestModel
-            {
-                Id = _suggest.Id,
-                Author = _suggest.Author,
-                Title = _suggest.Title,
-                Body = _suggest.Body
-            };
+            return Mapper.Map<Suggest, DTOSuggestModel>(_suggest);
 
-            return dto;
+            //DTOSuggestModel dto = new DTOSuggestModel
+            //{
+            //    Id = _suggest.Id,
+            //    Author = _suggest.Author,
+            //    Title = _suggest.Title,
+            //    Body = _suggest.Body
+            //};
+            //return dto;
         }
     }
 
     public class DTOSuggestModel
     {
         public int Id { get; set; }
+        [Required(ErrorMessage = "必须填写！")]
+        [MaxLength(15, ErrorMessage = "标题不能超过15字")]
         public string Title { get; set; }
+        [Required(ErrorMessage = "必须填写！")]
+        [MaxLength(200, ErrorMessage = "内容不能超过200字")]
         public string Body { get; set; }
         public User Author { get; set; }
     }

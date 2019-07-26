@@ -29,14 +29,17 @@ namespace SRV
             autoMapperConfig = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Suggest, DTOSuggestModel>();
-
+                cfg.CreateMap<DTOSuggestModel, Suggest>();
             });
-#if DEBUG
+#if DEBUG 
             autoMapperConfig.AssertConfigurationIsValid();
 #endif
             var mapper = autoMapperConfig.CreateMapper();
         }
 
+        /// <summary>
+        /// AotuMapper工具属型
+        /// </summary>
         protected IMapper Mapper
         {
             get
@@ -48,7 +51,7 @@ namespace SRV
         /// <summary>
         /// 通过 DI 在SRV 层获取Httpcontext 的 Cookie  再获得当前用户的属型！ 
         /// </summary>
-        protected User currentuser
+        public User currentuser
         {
             get
             {

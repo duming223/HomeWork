@@ -13,6 +13,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddScoped<UserService, UserService>();
             services.AddScoped<SuggestService, SuggestService>();
+            services.AddScoped<BaseService, BaseService>();
         }
 
 

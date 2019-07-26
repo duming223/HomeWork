@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BLL.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SRV;
@@ -18,7 +19,7 @@ namespace CoreWeb.Pages.Shared
         private string _userNameValue;
         private string _userMd5PassWordValue;
         //private UserModel _userModel;
-        //UserService _userService;
+        //private UserService _userService;
 
         //public _LayoutModel(/*UserModel userModel,*/UserService userService)
         //{
@@ -26,16 +27,16 @@ namespace CoreWeb.Pages.Shared
         //    //_userService = userService;
         //    UserService _userService = (UserService)HttpContext.RequestServices.GetService(typeof(UserService));
         //}
-
         public virtual void OnGet()
         {
+            //通过方法实现注入 有冲突
             UserService _userService = (UserService)HttpContext.RequestServices.GetService(typeof(UserService));
 
             if (HttpContext.Request.Cookies.TryGetValue(_userIDKry, out _userNameValue))
             {
                 if (HttpContext.Request.Cookies.TryGetValue(_userPassWordKey, out _userMd5PassWordValue))
                 {
-                     DTOUserModel _userModel = _userService.GetInfoByCookie(_userNameValue, _userMd5PassWordValue);
+                    DTOUserModel _userModel = _userService.GetInfoByCookie(_userNameValue, _userMd5PassWordValue);
                     if (_userModel != null)
                     {
                         ViewData["UserStatus"] = _userModel.UserName;
@@ -49,7 +50,7 @@ namespace CoreWeb.Pages.Shared
                 ViewData["UserStatus"] = null;
             }
         }
-         
+
         public string GetUserNameByCookie()
         {
             return _userNameValue;

@@ -39,6 +39,7 @@ namespace CoreWeb
         public void ConfigureServices(IServiceCollection services)
         {
             //添加注入对象
+            services.AddHttpContextAccessor();
             services.AddScoped<DbContext, SQLContext>();
             services.AddReporsitory();
             services.AddService();

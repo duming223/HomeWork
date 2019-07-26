@@ -15,17 +15,19 @@ namespace CoreWeb.Pages
     [BindProperties]
     public class SuggestModel : _LayoutModel
     {
-        [Required(ErrorMessage = "必须填写！")]
-        [MaxLength(15, ErrorMessage = "标题不能超过15字")]
-        public string Title { get; set; }
+        //[Required(ErrorMessage = "必须填写！")]
+        //[MaxLength(15, ErrorMessage = "标题不能超过15字")]
+        //public string Title { get; set; }
 
 
-        [Required(ErrorMessage = "必须填写！")]
-        [MaxLength(200, ErrorMessage = "内容不能超过200字")]
-        public string Body { get; set; }
+        //[Required(ErrorMessage = "必须填写！")]
+        //[MaxLength(200, ErrorMessage = "内容不能超过200字")]
+        //public string Body { get; set; }
 
-        private DTOUserModel _author;
+        //private DTOUserModel _author;
         private SuggestService _suggestService;
+        //使用suggestservice 里的dto来传递ui层的值
+        public DTOSuggestModel suggestModel { get; set; }
 
         public SuggestModel(SuggestService suggestModel)
         {
@@ -52,16 +54,22 @@ namespace CoreWeb.Pages
                 ModelState.AddModelError("Title", "请先登录！");
                 return Page();
             }
-            else
-            {
-                _author = new DTOUserModel();
-                _author.UserName = GetUserNameByCookie();
-            }
+
+            //else
+            //{
+            //    suggestModel = new DTOSuggestModel()
+            //    {
+            //        Author = _suggestService.currentuser,
+            //        Title = Title,
+            //        Body = Body
+            //    };
+            //}
 
             //Understand  运算符
-            int suggestid = _suggestService.Publish(Title, Body, _author).Id;
-            
-            return Redirect("/Suggest/SuggestSingle?suggestid="+suggestid);
+            suggestModel.Author = _suggestService.currentuser;
+            int suggestid = _suggestService.Publish(suggestModel).Id;
+
+            return Redirect("/Suggest/SuggestSingle?suggestid=" + suggestid);
         }
     }
 }
