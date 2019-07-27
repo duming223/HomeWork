@@ -16,5 +16,6 @@ namespace BLL.Repository
         {
             return Entities.Where(s => s.Author.UserName == name).SingleOrDefault();
         }
+
     }
 }

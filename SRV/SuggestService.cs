@@ -12,6 +12,7 @@ namespace SRV
     public class SuggestService : BaseService
     {
         private Suggest _suggest;
+        private IList<Suggest> _suggests;
         private SuggestReporsitory _suggestReporsitory;
 
         public SuggestService(SuggestReporsitory suggestReporsitory, IHttpContextAccessor httpContextAccessor,
@@ -33,6 +34,12 @@ namespace SRV
             //_suggest.Author = _userReporsitory.GetByName(userModel.UserName);
             //_suggestReporsitory.Save(_suggest);
             //return _suggest;
+        }
+
+        public IList<DTOSuggestModel> GetList(int pageIndex, int pageSize)
+        {
+            _suggests = _suggestReporsitory.GetList(pageIndex, pageSize);
+            return Mapper.Map<IList<Suggest>, IList<DTOSuggestModel>>(_suggests);
         }
 
         public DTOSuggestModel GetBy(int suggestid)

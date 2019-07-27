@@ -1,0 +1,25 @@
+﻿@page
+@model CoreWeb.Pages.Suggest.SuggestListModel
+@section Ad{ 建议列表}
+
+@foreach (var item in Model.suggests)
+{
+    @*<h2>@item.Author.UserName 的建议</h2><br />*@
+    <hr style="color:darkgray" />
+    <h2>Title:</h2><br />
+    @item.Title
+    <h3>Body:</h3><br />
+    <main>
+        @item.Body
+    </main>
+}
+
+<ul class="pagination">
+    <li><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1</a></li>
+    <li class="disabled"><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+</ul>

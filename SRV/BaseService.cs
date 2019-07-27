@@ -30,6 +30,7 @@ namespace SRV
             {
                 cfg.CreateMap<Suggest, DTOSuggestModel>();
                 cfg.CreateMap<DTOSuggestModel, Suggest>();
+                cfg.CreateMap<IList<Suggest>, IList<DTOSuggestModel>>();
             });
 #if DEBUG 
             autoMapperConfig.AssertConfigurationIsValid();
