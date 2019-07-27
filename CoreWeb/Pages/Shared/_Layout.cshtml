@@ -42,17 +42,35 @@
                 <ul class="nav navbar-nav">
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            文章<b class="caret"></b>
-                        </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">文章<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Article/Articlelists">列表</a></li>
+                            <li><a href="/Article/Articlelists">文章列表</a></li>
                             <li class="divider"></li>
-                            <li><a href="/Article/Article">发布</a></li>
+                            <li><a href="/Article/Article">发布文章</a></li>
+                            <li><a href="/Article/Article">我的文章</a></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="/Problem">求助</a></li>
-                    <li class="active"><a href="/Suggest/Suggest">建议</a></li>
+
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">求助<b class="caret"></b></a>
+                        @*<ul class="dropdown-menu">
+                            <li> <a href="/Suggest/Suggest">建议列表</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Suggest/">提出建议</a></li>
+                            <li><a href="/Suggest/">我的建议</a></li>
+                        </ul>*@
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">建议<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li> <a href="/Suggest/Suggest">建议列表</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Suggest/">提出建议</a></li>
+                            <li><a href="/Suggest/">我的建议</a></li>
+                        </ul>
+                    </li>
+
                     @if (ViewData["UserStatus"] == null)
                     {
                         <li><a href="/Login/Login">登录</a></li>
@@ -76,31 +94,8 @@
         </div>
     </nav>
 
-
-
-    @*<nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <link rel="Shortcut Icon" href="~/images/logo-big.ico" type="image/x-icon">
-                    <a class="navbar-brand" href="Index">一起帮</a>
-                    <a class="navbar-brand">@RenderSection("Ad", true)</a>
-
-                    @if (ViewData["UserStatus"] == null)
-                    {
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="Register"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-                            <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
-                        </ul>
-                    }
-                    else
-                    {
-
-                    }
-
-                </div>
-        </nav>*@
-
     @RenderBody()
+
     <footer>
         <hr style="color:darkgray" /><h6 style="color:dimgray">永远做最坏的打算 不要幻想事情有所转机!</h6>
     </footer>

@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBFactory", "DBFactory\DBFactory.csproj", "{AD57FA28-4DAD-4D7D-B778-C2C5BDE80E92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mytest", "Mytest\Mytest.csproj", "{C6B01C87-34EB-44E8-9C1F-AA091EDBABA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTest", "Mytest\MyTest.csproj", "{C6B01C87-34EB-44E8-9C1F-AA091EDBABA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
