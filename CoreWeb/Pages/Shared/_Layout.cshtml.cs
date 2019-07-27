@@ -29,7 +29,7 @@ namespace CoreWeb.Pages.Shared
         //}
         public virtual void OnGet()
         {
-            //通过方法实现注入 有冲突
+            //通过方法实现注入 有冲突 已解决未注册 httpaccessor 
             UserService _userService = (UserService)HttpContext.RequestServices.GetService(typeof(UserService));
 
             if (HttpContext.Request.Cookies.TryGetValue(_userIDKry, out _userNameValue))
