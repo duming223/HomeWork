@@ -14,12 +14,24 @@
     </main>
 }
 
-<ul class="pagination">
-    <li><a href="#">&laquo;</a></li>
-    <li class="active"><a href="#">1</a></li>
-    <li class="disabled"><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">&raquo;</a></li>
-</ul>
+    <ul class="pagination">
+        <li class=""><a href="?PageIndex=@Model.PageUp">&laquo;</a></li>
+        @for (int i = 0; i < 10; i++)
+        {
+            if (Model.PageIndex == Model.PageIndex + i)
+            {
+                <li class="active"><a href="?PageIndex=@(Model.PageIndex + i)">@(Model.PageIndex + i)</a></li>
+            }
+            else
+            {
+                <li class=""><a href="?PageIndex=@(Model.PageIndex + i)">@(Model.PageIndex + i)<b class="pre-scrollable"></b></a></li>
+            }
+        }
+        @*<li class="active"><a href="?PageIndex=1">@Model.PageIndex</a></li>
+        <li class="active"><a href="?PageIndex=2">2</a></li>
+        <li class="active"><a href="?PageIndex=3">3</a></li>
+        <li class="active"><a href="?PageIndex=4">4</a></li>
+        <li class="active"><a href="?PageIndex=5">5</a></li>
+        <li class="active"><a href="?PageIndex=6">6</a></li>*@
+        <li class=""><a href="?PageIndex=@Model.PageDown">&raquo;</a></li>
+    </ul>
