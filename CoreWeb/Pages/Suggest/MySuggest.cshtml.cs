@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,15 +6,17 @@ using CoreWeb.Pages.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SRV;
+using static SRV.UserService;
 
 namespace CoreWeb.Pages.Suggest
 {
-    public class SuggestListModel : _LayoutModel
+    [BindProperties]
+    public class MySuggestModel : _LayoutModel
     {
         [BindProperty(SupportsGet = true)]
         public int PageIndex { get; set; }
 
-        [BindProperty(SupportsGet =true)]
+        [BindProperty(SupportsGet = true)]
         public int PageAction { get; set; }
 
         public int PageSize = 3;
@@ -23,24 +24,19 @@ namespace CoreWeb.Pages.Suggest
         public int PageDown { get; set; }
         public IList<DTOSuggestModel> suggests;
 
-        private SuggestService _suggestService;
-        public SuggestListModel(SuggestService suggestService)
+        public SuggestService _suggestService;
+        public MySuggestModel(SuggestService suggestService)
         {
             _suggestService = suggestService;
         }
 
         public override void OnGet()
         {
-            ViewData["Title"] = "一起帮 😀 建议列表";
+            ViewData["Title"] = "一起帮 😀 我的建议";
             base.OnGet();
 
-
-            //PageIndex = 1;
-            //PageSize = 3;
-
-            //ActionPage = 7;
-            PageUp=PageIndex+7;
-            PageDown=PageIndex-7;
+            PageUp = PageIndex + 7;
+            PageDown = PageIndex - 7;
 
             if (PageDown < 1)
             {
@@ -48,27 +44,23 @@ namespace CoreWeb.Pages.Suggest
             }
 
             PageAction = 7 * (PageIndex / 7);
-            if (PageAction==0)
+            if (PageAction == 0)
             {
                 PageAction = 1;
             }
 
-            //if (PageIndex==PageUp-7)
+            //if (ViewData["UserStatus"] == null)
             //{
-            //    PageAction= PageUp;
+            //    Response.Redirect("/LogIn/LogIn");
             //}
-            //if (PageIndex==PageDown+7)
+            //if (_suggestService.currentuser!=null)
             //{
-            //    PageAction = PageDown+7;
+            //    suggests = _suggestService.GetListByAuthorId(_suggestService.currentuser.Id);
             //}
-  
-            suggests = _suggestService.GetList(PageIndex, PageSize);
-
-        }
-
-        public void OnPost()
-        {
-
+            //else
+            //{
+            //    Response.Redirect("/LogIn/LogIn");
+            //}
         }
     }
 }

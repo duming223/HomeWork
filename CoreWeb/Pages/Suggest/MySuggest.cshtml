@@ -1,0 +1,43 @@
+﻿@page
+@model CoreWeb.Pages.Suggest.MySuggestModel
+@section Ad{ 我的建议}
+
+@if (Model._suggestService.currentuser != null)
+{
+    @foreach (var item in Model.suggests)
+    {
+        @*<h2>@item.Author.UserName 的建议</h2><br />*@
+        <hr style="color:darkgray" />
+        <h2>Title:</h2><br />
+        @item.Title
+        <h3>Body:</h3><br />
+        <main>
+            @item.Body
+        </main>
+    }
+}
+else
+{
+    Response.Redirect("/LogIn/LogIn");
+}
+
+
+
+<div class="text-center">
+    <ul class="pagination">
+        <li class=""><a href="?PageIndex=@Model.PageDown">&laquo;</a></li>
+        @for (int i = 0; i < 7; i++)
+        {
+            if (Model.PageIndex == Model.PageAction + i)
+            {
+
+                <li class="active"><a href="?PageIndex=@(Model.PageAction + i)&ActionPage=@Model.PageAction">@(Model.PageAction + i)</a></li>
+            }
+            else
+            {
+                <li class=""><a href="?PageIndex=@(Model.PageAction + i)&ActionPage=@Model.PageAction">@(Model.PageAction + i)</a></li>
+            }
+        }
+        <li class=""><a href="?PageIndex=@Model.PageUp"> &raquo;</a></li>
+    </ul>
+</div>

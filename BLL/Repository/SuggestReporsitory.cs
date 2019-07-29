@@ -17,5 +17,9 @@ namespace BLL.Repository
             return Entities.Where(s => s.Author.UserName == name).SingleOrDefault();
         }
 
+        public IList<Suggest> GetListByAuthorId(int authorid)
+        {
+          return  Entities.Where(s=>s.Author.Id==authorid).ToList();
+        }
     }
 }

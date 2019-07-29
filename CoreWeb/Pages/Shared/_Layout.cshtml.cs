@@ -14,7 +14,7 @@ namespace CoreWeb.Pages.Shared
     [BindProperties]
     public class _LayoutModel : PageModel
     {
-        private const string _userIDKry = "UserName";
+        private const string _userNmaeKry = "UserName";
         private const string _userPassWordKey = "UserPassWord";
         private string _userNameValue;
         private string _userMd5PassWordValue;
@@ -32,7 +32,7 @@ namespace CoreWeb.Pages.Shared
             //通过方法实现注入 有冲突 已解决未注册 httpaccessor 
             UserService _userService = (UserService)HttpContext.RequestServices.GetService(typeof(UserService));
 
-            if (HttpContext.Request.Cookies.TryGetValue(_userIDKry, out _userNameValue))
+            if (HttpContext.Request.Cookies.TryGetValue(_userNmaeKry, out _userNameValue))
             {
                 if (HttpContext.Request.Cookies.TryGetValue(_userPassWordKey, out _userMd5PassWordValue))
                 {

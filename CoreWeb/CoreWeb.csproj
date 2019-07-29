@@ -24,4 +24,10 @@
     <ProjectReference Include="..\SRV\SRV.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Pages\Suggest\MySuggest.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>
