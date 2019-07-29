@@ -49,11 +49,14 @@ namespace CoreWeb.Pages.Suggest
                 PageAction = 1;
             }
 
-            //if (ViewData["UserStatus"] == null)
-            //{
-            //    Response.Redirect("/LogIn/LogIn");
-            //}
-            //if (_suggestService.currentuser!=null)
+
+            if (_suggestService.currentuser != null)
+            {
+                suggests = _suggestService.GetListByAuthorId(_suggestService.currentuser.Id);
+            }
+
+            //另一种方法
+            //if (ViewData["UserStatus"] ！= null)
             //{
             //    suggests = _suggestService.GetListByAuthorId(_suggestService.currentuser.Id);
             //}
