@@ -14,24 +14,20 @@
     </main>
 }
 
+<div class="text-center">
     <ul class="pagination">
-        <li class=""><a href="?PageIndex=@Model.PageUp">&laquo;</a></li>
-        @for (int i = 0; i < 10; i++)
+        <li class=""><a href="?PageIndex=@Model.PageDown">&laquo;</a></li>
+        @for (int i = 0; i <7; i++)
         {
-            if (Model.PageIndex == Model.PageIndex + i)
+            if (Model.PageIndex == Model.PageAction + i)
             {
-                <li class="active"><a href="?PageIndex=@(Model.PageIndex + i)">@(Model.PageIndex + i)</a></li>
+
+                <li class="active"><a href="?PageIndex=@(Model.PageAction + i)&ActionPage=@Model.PageAction">@(Model.PageAction + i)</a></li>
             }
-            else
-            {
-                <li class=""><a href="?PageIndex=@(Model.PageIndex + i)">@(Model.PageIndex + i)<b class="pre-scrollable"></b></a></li>
+            else            {
+                <li class=""><a href="?PageIndex=@(Model.PageAction + i)&ActionPage=@Model.PageAction">@(Model.PageAction + i)</a></li>
             }
         }
-        @*<li class="active"><a href="?PageIndex=1">@Model.PageIndex</a></li>
-        <li class="active"><a href="?PageIndex=2">2</a></li>
-        <li class="active"><a href="?PageIndex=3">3</a></li>
-        <li class="active"><a href="?PageIndex=4">4</a></li>
-        <li class="active"><a href="?PageIndex=5">5</a></li>
-        <li class="active"><a href="?PageIndex=6">6</a></li>*@
-        <li class=""><a href="?PageIndex=@Model.PageDown">&raquo;</a></li>
+        <li class=""><a href="?PageIndex=@Model.PageUp"> &raquo;</a></li>
     </ul>
+</div>
