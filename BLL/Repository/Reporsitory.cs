@@ -31,7 +31,7 @@ namespace BLL.Repository
         public T Save(T entity)
         {
             Entities.Add(entity);
-            _context.SaveChanges();
+            Flush();
 
             return entity;
         }

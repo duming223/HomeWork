@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL.Repository;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 
 namespace DBFactory
 {
@@ -6,7 +8,13 @@ namespace DBFactory
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DatabaseFacade db = new SQLContext().Database;
+            db.EnsureDeleted();
+            db.EnsureCreated();
+
+            Suggest.SuggestFactory.Create();
+
+            Console.WriteLine("AllRight");
         }
     }
 }
