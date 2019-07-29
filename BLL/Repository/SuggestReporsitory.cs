@@ -17,9 +17,9 @@ namespace BLL.Repository
             return Entities.Where(s => s.Author.UserName == name).SingleOrDefault();
         }
 
-        public IList<Suggest> GetListByAuthorId(int authorid)
+        public IList<Suggest> GetListByAuthorId(int authorid ,int pageIndex, int pageSize)
         {
-          return  Entities.Where(s=>s.Author.Id==authorid).ToList();
+          return  Entities.Where(s=>s.Author.Id==authorid).Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
         }
     }
 }

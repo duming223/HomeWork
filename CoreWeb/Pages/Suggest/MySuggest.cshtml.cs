@@ -52,7 +52,7 @@ namespace CoreWeb.Pages.Suggest
 
             if (_suggestService.currentuser != null)
             {
-                suggests = _suggestService.GetListByAuthorId(_suggestService.currentuser.Id);
+                suggests = _suggestService.GetListByAuthorId(_suggestService.currentuser.Id,PageIndex,PageSize);
             }
 
             //另一种方法
@@ -64,6 +64,10 @@ namespace CoreWeb.Pages.Suggest
             //{
             //    Response.Redirect("/LogIn/LogIn");
             //}
+        }
+        public void OnPost()
+        {
+
         }
     }
 }
