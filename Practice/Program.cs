@@ -41,7 +41,7 @@ namespace practice
 
     class F1 : RaceCar
     {
-        public void Ran()
+        public override void Ran()
         {
             Console.WriteLine("F1 is running");
         }
