@@ -42,10 +42,9 @@ namespace SRV
             return Mapper.Map<IList<Suggest>, IList<DTOSuggestModel>>(_suggests);
         }
 
-        public IList<DTOSuggestModel> GetListByAuthorId(int Authorid,int pageIndex,int pageSize)
+        public IList<DTOSuggestModel> GetListByAuthorId(int Authorid)
         {
-            _suggests= _suggestReporsitory.GetListByAuthorId(Authorid,pageIndex,pageSize);
-            
+            _suggests= _suggestReporsitory.GetListByAuthorId(Authorid);
             return Mapper.Map<IList<Suggest>, IList<DTOSuggestModel>>(_suggests);
         }
 
