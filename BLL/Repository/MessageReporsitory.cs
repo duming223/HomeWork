@@ -1,10 +1,17 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BLL.Repository
 {
-    class MessageReporsitory
+    public class MessageReporsitory : Reporsitory<Message>
     {
+
+        public MessageReporsitory(DbContext dbContext):base(dbContext)
+        {
+
+        }
+
     }
 }

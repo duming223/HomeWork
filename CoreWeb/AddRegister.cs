@@ -21,6 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddScoped<UserReporsitory, UserReporsitory>();
             services.AddScoped<SuggestReporsitory, SuggestReporsitory>();
+            services.AddScoped<MessageReporsitory, MessageReporsitory>();
         }
     }
 }

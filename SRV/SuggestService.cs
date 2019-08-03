@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 using static SRV.UserService;
 
@@ -12,7 +13,7 @@ namespace SRV
     public class SuggestService : BaseService
     {
         private Suggest _suggest;
-        private IList<Suggest> _suggests;
+        private IQueryable<Suggest> _suggests;
         private SuggestReporsitory _suggestReporsitory;
 
         public SuggestService(SuggestReporsitory suggestReporsitory, IHttpContextAccessor httpContextAccessor,
@@ -39,13 +40,13 @@ namespace SRV
         public IList<DTOSuggestModel> GetList(int pageIndex, int pageSize)
         {
             _suggests = _suggestReporsitory.GetList(pageIndex, pageSize);
-            return Mapper.Map<IList<Suggest>, IList<DTOSuggestModel>>(_suggests);
+            return Mapper.Map<IList<Suggest>, IList<DTOSuggestModel>>(_suggests.ToList());
         }
 
-        public IList<DTOSuggestModel> GetListByAuthorId(int Authorid)
+        public IList<DTOSuggestModel> GetListByAuthorId(int Authorid,int pageindex,int pagesize)
         {
-            _suggests= _suggestReporsitory.GetListByAuthorId(Authorid);
-            return Mapper.Map<IList<Suggest>, IList<DTOSuggestModel>>(_suggests);
+            _suggests= _suggestReporsitory.GetListByAuthorId(Authorid,pageindex,pagesize);
+            return Mapper.Map<IList<Suggest>, IList<DTOSuggestModel>>(_suggests.ToList());
         }
 
         public DTOSuggestModel GetBy(int suggestid)

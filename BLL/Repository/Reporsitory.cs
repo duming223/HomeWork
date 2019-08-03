@@ -47,9 +47,9 @@ namespace BLL.Repository
             return Entities.Where(e => e.Id == id).Single();
         }
 
-        public IList<T> GetList(int pageIndex, int pageSize)
+        public IQueryable<T> GetList(int pageIndex, int pageSize)
         {
-            IList<T> Result = Entities.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            IQueryable<T> Result = Entities.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return Result;
         }
 

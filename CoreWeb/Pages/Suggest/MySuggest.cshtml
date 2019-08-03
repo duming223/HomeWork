@@ -2,6 +2,7 @@
 @model CoreWeb.Pages.Suggest.MySuggestModel
 @section Ad{ 我的建议}
 
+
 @if (Model._suggestService.currentuser != null)
 {
     @foreach (var item in Model.suggests)

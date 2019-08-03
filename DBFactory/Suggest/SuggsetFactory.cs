@@ -14,12 +14,12 @@ namespace DBFactory.Suggest
             string folderPath = "..\\..\\..\\Data";
             string[] fileName = Directory.GetFiles(folderPath);
 
-            for (int i= 0; i < fileName.Length; i++)
+            for (int i = 0; i < fileName.Length; i++)
             {
                 string path = fileName[i];
                 string body = File.ReadAllText(path, Encoding.UTF8);
                 User author = null;
-                if (i%4==0)
+                if (i % 4 == 0)
                 {
                     author = Box.Xr;
                 }
@@ -29,16 +29,16 @@ namespace DBFactory.Suggest
                 }
                 publish(Path.GetFileName(path), body, author);
             }
-        //    foreach (var item in fileName)
-        //    {
-        //        //读取文件
-        //        string path= item;
-        //        //读取文件内容
-        //        string body = File.ReadAllText(item,Encoding.UTF8);
-        //        User author = path.Length%2 == 0 ? Box.Xr : Box.Dm;
+            //    foreach (var item in fileName)
+            //    {
+            //        //读取文件
+            //        string path= item;
+            //        //读取文件内容
+            //        string body = File.ReadAllText(item,Encoding.UTF8);
+            //        User author = path.Length%2 == 0 ? Box.Xr : Box.Dm;
 
-        //        publish(Path.GetFileName(path), body, author);
-        //    }
+            //        publish(Path.GetFileName(path), body, author);
+            //    }
         }
 
         private static BLL.Suggest publish(string title, string body, User author)
@@ -51,6 +51,15 @@ namespace DBFactory.Suggest
                 Author = author
             };
             suggestReporsitory.Save(suggest);
+
+            BLL.Message message = new BLL.Message
+            {
+                PublishTime = DateTime.Now,
+                Owner = author
+            };
+            MessageReporsitory messageReporsitory = new MessageReporsitory(Helper.Context);
+            messageReporsitory.Save(message);
+
             return suggest;
         }
     }

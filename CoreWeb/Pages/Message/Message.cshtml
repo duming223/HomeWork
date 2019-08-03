@@ -1,10 +1,37 @@
 ﻿@page
 @model CoreWeb.Pages.Message.MessageModel
-@section Ad{我的消息}
+@section Ad{系统消息}
 
-@{
-    ViewData["Title"] = "Message";
+@foreach (var item in Model.Messages)
+{
+    <hr style="color:darkgray" />
+    <h2> Message:</h2>
+    @item.PublishTime @item.Owner  <b>发布了一个建议！</b>
+
+    @*<br />
+    <h3>Body:</h3>
+    <br />
+    <main>
+        @item.Body
+    </main>*@
 }
 
-<h2>Message</h2>
+<div class="text-center">
+    <ul class="pagination">
+        <li class=""><a href="?PageIndex=@Model.PageDown">&laquo;</a></li>
+        @for (int i = 0; i < 7; i++)
+        {
+            if (Model.PageIndex == Model.PageAction + i)
+            {
+
+                <li class="active"><a href="?PageIndex=@(Model.PageAction + i)&ActionPage=@Model.PageAction">@(Model.PageAction + i)</a></li>
+            }
+            else
+            {
+                <li class=""><a href="?PageIndex=@(Model.PageAction + i)&ActionPage=@Model.PageAction">@(Model.PageAction + i)</a></li>
+            }
+        }
+        <li class=""><a href="?PageIndex=@Model.PageUp"> &raquo;</a></li>
+    </ul>
+</div>
 

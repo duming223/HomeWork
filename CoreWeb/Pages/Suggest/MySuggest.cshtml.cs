@@ -52,7 +52,7 @@ namespace CoreWeb.Pages.Suggest
 
             if (_suggestService.currentuser != null)
             {
-                suggests = _suggestService.GetListByAuthorId(_suggestService.currentuser.Id);
+                suggests = _suggestService.GetListByAuthorId(_suggestService.currentuser.Id,PageIndex,PageIndex);
             }
 
             //另一种方法
