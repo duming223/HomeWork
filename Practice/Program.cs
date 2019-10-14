@@ -10,8 +10,6 @@ namespace practice
         static void Main(string[] args)
         {
             //test
-            Console.WriteLine(DateTime.Now.ToString("yyyy MM dd hh mm ss"));
-            Console.WriteLine(DateTime.Now.ToString());
         }
     }
 
